@@ -213,4 +213,16 @@
         });
     });
 
+    var btnContainer = document.getElementById("product__pagination");
+    var btns = btnContainer.getElementsByClassName("shopnav");
+    
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.querySelector("#product__pagination .active");
+            current.classList.remove("active");
+            this.classList.add("active");
+        });
+    }
+    
+
 })(jQuery);
