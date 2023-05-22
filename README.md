@@ -1,3 +1,7 @@
-# kanclothing.github.io
+# kanclothing.github.io CONTRIBS
 
-frontend muna
+Sta. Maria
+-binded shop navigation to carousel
+-fixed shop navigation
+
+
