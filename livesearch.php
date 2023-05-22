@@ -14,7 +14,7 @@ if (strlen($q) > 0) {
     if ($y->item(0) != null && $y->item(0)->nodeType == 1) {
       $title = $y->item(0)->nodeValue;
       
-      if (strncasecmp($q, $title, strlen($q)) === 0) {
+      if (stripos($title, $q) !== false) {
         $hint .= "<a href='" .
           $z->item(0)->nodeValue .
           "' target='_blank' style='padding-right: 20px; width: 100%; font-size: 15px; color: #666666; padding-left: 20px; border: 1px solid #e5e5e5; height: 42px;'>" .
