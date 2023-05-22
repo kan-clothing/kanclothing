@@ -7,4 +7,6 @@ na tong website sa pc nyo
 
 -Miguel
 "
+tangina niyo magsigawa na kayo magparamdam kayo kingina niyo malapit na toh
+-si miguel toh legit
 
