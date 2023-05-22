@@ -1,7 +1,4 @@
-# kanclothing.github.io CONTRIBS
+# kanclothing.github.io 
 
-Sta. Maria
--binded shop navigation to carousel
--fixed shop navigation
-
+frontend goisss
 
