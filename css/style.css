@@ -1373,7 +1373,7 @@ ol {
 }
 
 .shop__sidebar__tags a {
-	color: #404040;
+	color: #ffffff;
 	font-size: 13px;
 	font-weight: 700;
 	background: #f1f5f8;
@@ -1389,7 +1389,7 @@ ol {
 
 .shop__sidebar__tags a:hover {
 	background: #111111;
-	color: #ffffff;
+	color: #010000;
 }
 
 .shop__sidebar__accordion .card-heading a:after,
@@ -1400,21 +1400,22 @@ ol {
 	font-weight: 700;
 	color: #111111;
 	position: absolute;
-	right: 0;
-	top: 2px;
+	right: 30px;
+	top: 10px;
 	line-height: 20px;
 }
 
 .shop__sidebar__accordion .card-heading.active a:after {
 	content: "";
-	font-family: "FontAwesome";
+	font-family: "FontAwesome";	
 	font-size: 24px;
 	font-weight: 700;
 	color: #111111;
 	position: absolute;
-	right: 0;
-	top: 2px;
+	right: 30px;
+	top: 10px;
 	line-height: 20px;
+	
 }
 
 .shop__product__option {
@@ -1666,7 +1667,7 @@ ol {
 	border: 1px solid #e5e5e5;
 	padding: 6px 15px;
 	margin-bottom: 0;
-	margin-right: 5px;
+	margin-right: 5px;	
 	cursor: pointer;
 }
 
