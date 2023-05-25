@@ -52,13 +52,13 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
-                            <p>Free shipping, 30-day return or refund guarantee.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <a href="#">Sign in</a>
+                                <a href="./signin.php">Sign in</a>
+                              
                             </div>
                         </div>
                     </div>
@@ -75,8 +75,8 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li class="active"><a href="./shop.html">Shop</a></li>
+                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li><a href="./shop.html">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.html">About Us</a></li>
@@ -91,22 +91,11 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__nav__option">
-                        
-                    </div>
-                </div>
+              
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
     </header>
-
-    <div class="shop__sidebar__search">
-        <form>
-            <input type="text" size="30" onkeyup="showResult(this.value)" placeholder="Search...">
-            <div id="livesearch2"></div>
-        </form>
-    </div>      
     <!-- Header Section End -->
 
     <!-- Shop Details Section Begin -->

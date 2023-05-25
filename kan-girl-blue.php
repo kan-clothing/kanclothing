@@ -52,13 +52,13 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
-                            <p>Free shipping, 30-day return or refund guarantee.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <a href="#">Sign in</a>
+                                <a href="./signin.php">Sign in</a>
+                              
                             </div>
                         </div>
                     </div>
@@ -75,8 +75,8 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li class="active"><a href="./shop.html">Shop</a></li>
+                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li><a href="./shop.html">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.html">About Us</a></li>
@@ -91,22 +91,11 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__nav__option">
-                        
-                    </div>
-                </div>
+              
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
     </header>
-
-    <div class="shop__sidebar__search">
-        <form>
-            <input type="text" size="30" onkeyup="showResult(this.value)" placeholder="Search...">
-            <div id="livesearch2"></div>
-        </form>
-    </div>      
     <!-- Header Section End -->
 
     <!-- Shop Details Section Begin -->
@@ -1161,7 +1150,7 @@ switch($display4){
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="img/kanlogo.png" alt=""></a>
+                            <a href="#"><img src="img/logo.png" alt=""></a>
                         </div>
                         <p>Shirt that suits your fashion</p>
 
@@ -1171,8 +1160,8 @@ switch($display4){
                     <div class="footer__widget">
                         <h6>Shopping</h6>
                         <ul>
-                            <li><a href="shop.html">Clothing Store</a></li>
-
+                            <li><a href="#">Clothing Store</a></li>
+                         
                         </ul>
                     </div>
                 </div>
@@ -1181,9 +1170,12 @@ switch($display4){
                         <h6>Services</h6>
                         <ul>
                             <li><a href="#">Contact Us</a></li>
-
+                         
                         </ul>
                     </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                  
                 </div>
             </div>
             <div class="row">
@@ -1193,7 +1185,7 @@ switch($display4){
                         <p>Copyright ©
                             <script>
                                 document.write(new Date().getFullYear());
-                            </script>
+                            </script>2020
                             All rights reserved | This template is made with <i class="fa fa-heart-o"
                             aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                         </p>
@@ -1203,6 +1195,7 @@ switch($display4){
             </div>
         </div>
     </footer>
+
     <!-- Footer Section End -->
 
     <!-- Search Begin -->
