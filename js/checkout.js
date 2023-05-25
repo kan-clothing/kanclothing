@@ -7,8 +7,10 @@ btn.addEventListener('click', function(e) {
     var fname = document.getElementById('sname').value;
 	var email = document.getElementById('email').value;
 	var message1 = document.getElementById('message').value;
+    var postal = document.getElementById('postcode').value;
+    var phone = document.getElementById('phone').value;
 	
-	var mail = 'name: '+ sname + fname +'<br/> email: ' + email + '<br/> subject: ' +  'CHECKOUT' + '<br/> ORDERS: Wala pa haha (place holder lang e2)' + '<br/> NOTES: ' + message1;
+	var mail ='SUBJECT: CHECKOUT ' +  '<br/> ORDERS: Wala pa haha (place holder lang e2)' + '</br>NAME: '+ sname + ' '+ fname +'<br/> EMAIL: ' + email +'</br> PHONE: ' + phone +'</br> POSTCODE: ' + postal +'<br/> NOTES: ' + message1;
 	           
 	
 	
@@ -23,4 +25,4 @@ btn.addEventListener('click', function(e) {
 }).then(
     message => alert(message)
 );	
-	})
+	})  
