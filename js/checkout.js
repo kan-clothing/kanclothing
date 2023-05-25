@@ -8,7 +8,7 @@ btn.addEventListener('click', function(e) {
 	var email = document.getElementById('email').value;
 	var message1 = document.getElementById('message').value;
 	
-	var mail = 'name: '+ sname + fname +'<br/> email: ' + email + '<br/> subject: ' +  'CHECKOUT' + '<br/> ORDERS: ' + message1;
+	var mail = 'name: '+ sname + fname +'<br/> email: ' + email + '<br/> subject: ' +  'CHECKOUT' + '<br/> ORDERS: Wala pa haha (place holder lang e2)' + '<br/> NOTES: ' + message1;
 	           
 	
 	
