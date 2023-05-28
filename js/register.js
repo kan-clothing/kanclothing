@@ -1,16 +1,4 @@
-
-        // Import the functions you need from the SDKs you need
-      // Initialize Firebase
-     
-
-
-// Initialize Firebase
-
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
+    var firebaseConfig = {
     apiKey: "AIzaSyAMo5G5bWkDHzyXkLQjcB6F5C8GQGmeiNc",
     authDomain: "kan-clothing.firebaseapp.com",
     databaseURL: "https://kan-clothing-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -19,51 +7,82 @@
     messagingSenderId: "943100252975",
     appId: "1:943100252975:web:0268951ffea192d27e47da"
   };
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth();
-    const database = getDatabase();
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const database = firebase.database();
        
 
-    function register(){
-        const email = document.getElementById('email').value;
-        const fname = document.getElementById('firstname').value;
-        const lname = document.getElementById('lastname').value;
-        const password = document.getElementById('password').value;
+    function registerNow (){
+        email = document.getElementById('email').value;
+        fname = document.getElementById('firstname').value;
+        lname = document.getElementById('lastname').value;
+        password = document.getElementById('password').value;
 
-        if (!validate_email(email) || !validate_password(password)) {
+        if (validate_email(email)==false||validate_password(password)==false){
+            alert('Email or Password is out of Line!')
+            return
         }
-        if (!validate_field(fname) || !validate_field(lname)) {
+        if (validate_field(fname)==false || validate_field(lname) == false){
+            alert('One or More Extra Fields is out of line!')
+            return
         }
+         auth.createUserWithEmailAndPassword(email, password)
+        .then(function(){
+            var user = auth.currentUser
+            var database_ref = database.ref()
 
-        auth.createUserWithEmailAndPassword(email, password)
-            .then(function() {
-                const user = auth.currentUser;
-                const database_ref = database.ref();
-                const user_data = {
-                    email: email,
-                    full_name: fname + ' ' + lname,
-                    last_login: Date.now()
-                };
-                database_ref.child('users/' + user.uid).set(user_data);
-            })
-            .catch(function(error) {
-                const error_code = error.code;
-                const error_message = error.message;
-                alert(error_message);
-            });
+            var user_data = {
+                email : email,
+                firstname : fname,
+                lastname : lname,
+                last_login : Date.now()
+
+            }
+
+            database_ref.child('users/' + user.uid).set(user_data)
+
+                
+            alert('User Created')
+
+
+        })
+        .catch(function(error){
+            var error_code = error.code
+            var error_message = error.message
+            
+            alert(error_message)
+        })
+
     }
 
     function validate_email(email) {
-        const expression = /^[^@]+@\w+(\.\w+)+\w$/;
-        return expression.test(email);
+        expression = /^[^@]+@\w+(\.\w+)+\w$/
+        if (expression.test(email) == true){
+            return true
+        }
+        else{
+            return false
+        }
     }
 
-    function validate_password(password) {
-        return password.length >= 6;
+    function validate_password(password){
+        if (password < 6){
+            return false
+        } else {
+            return true
+        }
     }
 
-    function validate_field(field) {
-        return field && field.trim().length > 0;
+    function validate_field(field){
+        if(field == null){
+            return false
+        } 
+        if(field.length <=0){
+            return false
+        }else {
+            return true
+        }
     }
 
+          
 
