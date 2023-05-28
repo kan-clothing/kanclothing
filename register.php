@@ -63,7 +63,12 @@
                                             id="rpassword" placeholder="Repeat Password">
                                     </div>
                                 </div>
-                                <button type = "button" onclick="registerNow()" class="btn btn-primary btn-user btn-block">Register Now</button> 
+                                
+            
+
+                               <button type = "button" onclick="registerNow()" class="btn btn-primary btn-user btn-block">Register Now</button>
+                                
+                          
                             </form>
                                                              
  
@@ -101,7 +106,9 @@
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
     <script src = "js/register.js"></script>
+
 
       
 

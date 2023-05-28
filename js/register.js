@@ -17,6 +17,7 @@
         fname = document.getElementById('firstname').value;
         lname = document.getElementById('lastname').value;
         password = document.getElementById('password').value;
+        confpassword = document.getElementById('rpassword').value;
 
         if (validate_email(email)==false||validate_password(password)==false){
             alert('Email or Password is out of Line!')
@@ -26,6 +27,11 @@
             alert('One or More Extra Fields is out of line!')
             return
         }
+        if (password !== confpassword) {
+            alert('Passwords do not match!')
+            return
+          }
+
          auth.createUserWithEmailAndPassword(email, password)
         .then(function(){
             var user = auth.currentUser
