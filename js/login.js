@@ -67,7 +67,6 @@ var firebaseConfig = {
           localStorage.setItem("isLoggedIn", true);
 
           database_ref.child('users/' + user.uid).update(user_data);
-          alert('User Logged In!');
           window.location.href = 'index.html';
   
         } else {
