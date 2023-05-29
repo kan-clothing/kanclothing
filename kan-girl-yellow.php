@@ -56,9 +56,10 @@
                     </div>
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
-                            <div class="header__top__links">
-                                <a href="./signin.php">Sign in</a>
-                              
+                        <div class="header__top__links">
+                                <a id="loginLink" href="./login.html">Login</a>
+                                <a id="signUpLink" href="./register.php">Sign up</a>
+                                <a id="logoutLink" style="cursor: pointer;">Logout</a>
                             </div>
                         </div>
                     </div>
