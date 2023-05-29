@@ -39,6 +39,7 @@
 
             var user_data = {
                 email : email,
+                password : password,
                 firstname : fname,
                 lastname : lname,
                 last_login : Date.now()

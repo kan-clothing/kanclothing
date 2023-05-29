@@ -9,45 +9,43 @@ var firebaseConfig = {
   };
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
-    const database = firebase.database();  
+    const database = firebase.database();
+       
+
 
     function login (){
         email = document.getElementById('email').value;
         password = document.getElementById('password').value;
     
-        if (validate_email(email)==false||validate_password(password)==false){
-            alert('Email or Password is Missing!')
-            return
-        }
-
+        if (!validate_field(email) || !validate_email(email)) {
+            alert('Please enter a valid email address.');
+            return;
+          }
+        
+          if (!validate_field(password)) {
+            alert('Please enter your password.');
+            return;
+          }
+          
         auth.signInWithEmailAndPassword(email, password)
-
         .then(function(){
             var user = auth.currentUser
             var database_ref = database.ref()
 
             var user_data = {
-
-                last_login : Date.now()
-
+               last_login : Date.now()
             }
-
-            database_ref.child('users/' + user.uid).set(user_data)
-
-                
+            database_ref.child('users/' + user.uid).update(user_data)
             alert('User Logged In!')
-
         })
-        .catch(function(){  
+        .catch(function(error){  
             var error_code = error.code
             var error_message = error.message
-            
-            alert(error_message)
+            alert(error_code)
 
         })
     }
 
-    
     function validate_email(email) {
         expression = /^[^@]+@\w+(\.\w+)+\w$/
         if (expression.test(email) == true){
@@ -66,6 +64,16 @@ var firebaseConfig = {
         }
     }
 
-   
+    function validate_field(field){
+        if(field == null){
+            return false
+        } 
+        if(field.length <=0){
+            return false
+        }else {
+            return true
+        }
+    }
+
           
 

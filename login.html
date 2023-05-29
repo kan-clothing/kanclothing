@@ -44,12 +44,12 @@
                                     <form class="user">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                id="email" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="password" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -58,9 +58,9 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        <button type = "button" onclick = "login()" href="index.html" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </a>
+                                        </button>
                                         <hr>
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
@@ -89,51 +89,6 @@
     </div>
 
     
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-
-        import { initializeApp } from "firebase/app";
-        import { getAuth } from "firebase/auth";
-
-        import { initializeApp } from "firebase/app";
-        import { getDatabase } from "firebase/database";
-
-
-// Initialize Firebase
-
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyAMo5G5bWkDHzyXkLQjcB6F5C8GQGmeiNc",
-          authDomain: "kan-clothing.firebaseapp.com",
-          projectId: "kan-clothing",
-          storageBucket: "kan-clothing.appspot.com",
-          messagingSenderId: "943100252975",
-          appId: "1:943100252975:web:0268951ffea192d27e47da",
-          databaseURL: "https://DATABASE_NAME.firebaseio.com"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-
-        const auth = firebase.auth();
-        const database = firebase.database();
-
-        function register(){
-
-            email = document.getElementById('').value
-            email = document.getElementById('').value
-            
-
-
-        }
-         
-
-
-      </script>
 
 
 
@@ -146,6 +101,12 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <script src = "js/login.js"></script>
 
 </body>
 
