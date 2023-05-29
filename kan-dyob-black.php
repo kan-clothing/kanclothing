@@ -34,10 +34,10 @@
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
-            <div class="offcanvas__links">
-                <a href="#">Sign in</a>
+        <div class="offcanvas__links">
+                <a id = "respsign" href="login.html">Sign in</a>
+                <a id = "respout" href="index.html">Logout</a>
             </div>
-          
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
