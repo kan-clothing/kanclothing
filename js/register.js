@@ -41,7 +41,6 @@ var firebaseConfig = {
       var database_ref = database.ref();
       var user_data = {
         email: email,
-        password: password,
         firstname: fname,
         lastname: lname,
         last_login: Date.now()
