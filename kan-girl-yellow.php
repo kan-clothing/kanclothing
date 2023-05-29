@@ -1210,7 +1210,10 @@ switch($display4){
     }
 
       </script>
-      
+      <script src="js/login.js"></script>
+    <script src="js/loggedin.js"></script>
+    <script src="js/logout.js"></script>
+
 </body>
 
 </html>

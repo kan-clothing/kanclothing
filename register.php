@@ -108,6 +108,7 @@
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
 
     <script src = "js/register.js"></script>
+    <script src="js/auth.js"></script>
 
 
       
