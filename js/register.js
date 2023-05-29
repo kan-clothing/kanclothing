@@ -48,6 +48,7 @@ var firebaseConfig = {
       await database_ref.child('users/' + user.uid).set(user_data);
   
       alert('User Created. Please check your email for verification.');
+      window.location.href = 'login.html';
     } catch (error) {
       var error_code = error.code;
       var error_message = error.message;
