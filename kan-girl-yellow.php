@@ -1212,9 +1212,11 @@ switch($display4){
     }
 
       </script>
-      <script src="js/login.js"></script>
-    <script src="js/loggedin.js"></script>
-    <script src="js/logout.js"></script>
+     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src = "js/login.js"></script>
+    <script src = "js/loggedout.js"></script>
 
 </body>
 
