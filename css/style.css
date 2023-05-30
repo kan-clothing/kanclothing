@@ -529,7 +529,7 @@ ol {
 
 .header__nav__option .price {
 	font-size: 15px;
-	color: #111111;
+	color: #fff;
 	font-weight: 700;
 	display: inline-block;
 	margin-left: -20px;
@@ -1383,7 +1383,7 @@ ol {
 	margin-right: 6px;
 	margin-bottom: 10px;
 	-webkit-transition: all, 0.3s;
-	-o-transition: all, 0.3s;
+	-o-transition: all, 0.3s;	
 	transition: all, 0.3s;
 }
 
