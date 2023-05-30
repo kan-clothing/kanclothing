@@ -11,31 +11,30 @@ var firebaseConfig = {
   const auth = firebase.auth();
   const database = firebase.database();
   
-  // Add a logged-in status variable
+
   var isLoggedIn = false;
-  
-  // Function to update the logged-in status
+
   function updateLoggedInStatus(status) {
     isLoggedIn = status;
-    // Update your UI based on the logged-in status
+
     if (isLoggedIn) {
-      // User is logged in
+   
       console.log('User is logged in!');
-      // Example: Update UI elements, show user-specific content, etc.
+
     } else {
-      // User is logged out
+
       console.log('User is logged out.');
-      // Example: Update UI elements, hide user-specific content, etc.
+  
     }
   }
   
-  // Check the initial authentication state
+
   auth.onAuthStateChanged(function(user) {
     if (user && user.emailVerified) {
-      // User is logged in and email is verified
+    
       updateLoggedInStatus(true);
     } else {
-      // User is logged out or email is not verified
+
       updateLoggedInStatus(false);
     }
   });
@@ -67,7 +66,7 @@ var firebaseConfig = {
           localStorage.setItem("isLoggedIn", true);
 
           database_ref.child('users/' + user.uid).update(user_data);
-          window.location.href = 'index.html';
+          window.history.back();
   
         } else {
           auth.signOut();
