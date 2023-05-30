@@ -60,7 +60,7 @@
                         <div class="header__top__links">
                                 <a id="loginLink" href="./login.html">Login</a>
                                 <a id="signUpLink" href="./register.html">Sign up</a>
-                                <a id="logoutLink" style="cursor: pointer;">Logout</a>
+                                <a id="logoutLink" type = "button" onclick = "logout()" style="cursor: pointer;">Logout</a>
                             </div>
                         </div>
                     </div>
@@ -1197,7 +1197,7 @@ switch($display4){
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src = "js/login.js"></script>
-    <script src = "js/loggedout.js"></script>
+    <script src = "js/loggedoutclick.js"></script>
 
 </body>
 
