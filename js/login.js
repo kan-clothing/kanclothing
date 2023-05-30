@@ -20,6 +20,7 @@ var firebaseConfig = {
     if (isLoggedIn) {
    
       console.log('User is logged in!');
+      window.location.href = 'index.html';
 
     } else {
 
@@ -33,10 +34,12 @@ var firebaseConfig = {
     if (user && user.emailVerified) {
     
       updateLoggedInStatus(true);
+      window.location.href = 'index.html';
     } else {
 
       updateLoggedInStatus(false);
     }
+  
   });
   
   function login() {
