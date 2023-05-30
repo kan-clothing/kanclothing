@@ -1,21 +1,30 @@
-// Retrieve the logged-in status from storage
+
 var isLoggedIn = localStorage.getItem("isLoggedIn");
 
-// Update your UI based on the logged-in status
 if (isLoggedIn === "true") {
-  // User is logged in
   console.log('User is logged in!');
   document.getElementById("loginLink").style.display = "none";
   document.getElementById("signUpLink").style.display = "none";
   document.getElementById("logoutLink")
   document.getElementById("respsign").style.display = "none";
   document.getElementById("respout")
+  document.getElementById("contact-us");
+  document.getElementById("cart-shop");
+  document.getElementById("check-out");
 } else {
-  // User is logged out
+ 
   console.log('User is logged out.');
   document.getElementById("loginLink")
   document.getElementById("signUpLink")
   document.getElementById("logoutLink").style.display = "none";
   document.getElementById("respsign")
   document.getElementById("respout").style.display = "none";
+  document.getElementById("contact-us").style.display = "none";
+  document.getElementById("cart-shop").style.display = "none";
+  document.getElementById("check-out").style.display = "none";
+
+  document.getElementById("product-add-cart").addEventListener("click", function() {
+    window.location.href = "login.html";
+  });
+  
 }

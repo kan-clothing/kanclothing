@@ -82,11 +82,11 @@
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.html">About Us</a></li>
-                                    <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a  id = "cart-shop" href="./shopping-cart.html">Shopping Cart</a></li>
+                                    <li><a id = "check-out" href="./checkout.html">Check Out</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./contact.html">Contacts</a></li>
+                            <li><a id = "contact-us" href="./contact.html">Contact Us</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -186,7 +186,7 @@
                                         <input type="text" value="1">
                                     </div>
                                 </div>
-                                <a href="#" class="primary-btn">add to cart</a>
+                                <button type = "button" id = "product-add-cart" href="" class="primary-btn">add to cart</button>
                             </div>
                             <div class="product__details__last__option">
                                 <h5><span>Guaranteed Safe Checkout</span></h5>
