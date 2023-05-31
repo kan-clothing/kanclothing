@@ -28,13 +28,11 @@
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src = "js/login.js"></script>
     <script>
-        // Wait for the DOM to load
+
         document.addEventListener('DOMContentLoaded', function() {
-          // Get a reference to the name and email input elements
           var nameInput = document.getElementById('name');
           var emailInput = document.getElementById('email');
-      
-          // Check if a user is currently authenticated
+    
           var user = firebase.auth().currentUser;
           if (user) {
             var userId = user.uid;
@@ -43,7 +41,6 @@
             userRef.once('value', function(snapshot) {
               var userData = snapshot.val();
               if (userData) {
-                // Populate the name and email fields with the retrieved data
                 nameInput.value = userData.firstname + ' ' + userData.lastname;
                 emailInput.value = userData.email;
               }
