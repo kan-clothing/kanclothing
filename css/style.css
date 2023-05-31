@@ -2132,6 +2132,12 @@ ol {
 .about__item p {
 	margin-bottom: 0;
 }
+.summersoft{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 20%;
+}
 
 /*---------------------
   Testimonial
