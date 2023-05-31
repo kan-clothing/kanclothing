@@ -29,7 +29,7 @@ function updateLoggedInStatus(status) {
     console.log('User is logged in!');
     if (loginLink) loginLink.style.display = "none";
     if (signUpLink) signUpLink.style.display = "none";
-    if (logoutLink) logoutLink.style.display = ""; // Show logout link
+    if (logoutLink) logoutLink.style.display = ""; 
     if (respsign) respsign.style.display = "none";
     if (respout) respout.style.display = "none";
     if (contactUs) contactUs.style.display = "none";
@@ -40,8 +40,7 @@ function updateLoggedInStatus(status) {
     console.log('User is logged out.');
     if (loginLink) loginLink.style.display = "";
     if (signUpLink) signUpLink.style.display = "";
-    if (logoutLink) logoutLink.style.display = "none"; // Hide logout link
-    if (respsign) respsign.style.display = "";
+    if (logoutLink) logoutLink.style.display = "none"; 
     if (respout) respout.style.display = "";
     if (contactUs) contactUs.style.display = "";
     if (cartShop) cartShop.style.display = "";
@@ -139,8 +138,8 @@ function logout() {
     .auth()
     .signOut()
     .then(function () {
-      window.location.href = 'index.html'; // Replace with the desired URL to redirect after logout
-      updateLoggedInStatus(false); // Update logged-in status to false
+      window.location.href = 'index.html'; 
+      updateLoggedInStatus(false); 
     })
     .catch(function (error) {
       console.log(error);
