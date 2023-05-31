@@ -23,17 +23,16 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-
-
+   
 </head>
 
 <body>
-    <!-- Page Preloder -->
+
     <div id="preloder">
         <div class="loader"></div>
     </div>
 
-    <!-- Offcanvas Menu Begin -->
+
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
@@ -47,19 +46,18 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p id="username" style = "font-weight:bold; font-size: 15px"></p>
+            <p class="username" style = "font-weight:bold; font-size: 15px"></p>
         </div>
     </div>
-    <!-- Offcanvas Menu End -->
 
-    <!-- Header Section Begin -->
+
     <header class="header">
         <div class="header__top">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
-                            <p id = "username"></p>
+                            <p class = "username"></p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5" style="color:#ffffff;">
@@ -154,17 +152,18 @@
                                             <div class="shop__sidebar__color" style="margin-left: 10px;">
                                                 
                                                 <label class="c-1" for="sp-1">
-                                                    <input type="radio" id="sp-1">
+                                                    <input type="radio" name="color-group" value="black-click"> 
                                                 </label>
                                                 <label class="c-2" for="sp-2">
-                                                    <input type="radio" id="sp-2">
+                                                    <input type="radio" name="color-group" value="blue-click"> 
                                                 </label>
                                                 <label class="c-3" for="sp-3">
-                                                    <input type="radio" id="sp-3">
-                                                </label>                                       
-                                                <label class="c-9" for="sp-9">
-                                                    <input type="radio" id="sp-9">
+                                                    <input type="radio" name="color-group" value="yellow-click"> 
                                                 </label>
+                                                <label class="c-9" for="sp-9">
+                                                    <input type="radio" name="color-group" value="white-click"> 
+                                                </label>
+
                                             </div>
                                         </div>
                                     </div>
@@ -209,10 +208,10 @@
                       </ol>
                     <!--INNER START-->
                     <div class="carousel-inner">
-                    <div class="carousel-item active" data-interval="2000"><!--SHOP1 START-->
-                    
+
+                    <div class="carousel-item active caroside-1" data-interval="2000"><!--SHOP1 START--> 
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="col-lg-4 col-md-6 col-sm-6" class = "black-shirt colorful-shirt">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg"  style="border: 1px solid #6f6859;">
                                 </div>
@@ -223,7 +222,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
+
+                        <div class="col-lg-4 col-md-6 col-sm-6" class ="white-shirt with-person">
                             <div class="product__item sale">
                                 <div class="product__item__pic set-bg" data-setbg="img/product/product-14.jpg" style="border: 1px solid #6f6859;">                       
                                 </div>
@@ -234,7 +234,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="col-lg-4 col-md-6 col-sm-6" class ="black-shirt logo-shirt">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg" style="border: 1px solid #6f6859;">
                                 </div>
@@ -243,20 +243,15 @@
                                     <a href="kan-logo-black.php" class="add-cart">View Product</a>
                                     <h5>₱549</h5>
                                     <div class="product__color__select">
-                                        <label for="pc-10">
-                                            <input type="radio" id="pc-10">
-                                        </label>
-                                        <label class="active black" for="pc-11">
-                                            <input type="radio" id="pc-11">
-                                        </label>
-                                        <label class="grey" for="pc-12">
-                                            <input type="radio" id="pc-12">
-                                        </label>
+                                        <a href="#" style="background-color:#444643;margin-left:auto;" class="color-option" data-color="black">Black</a>
+                                        <a href="#" style="background-color:#444643;margin-left:auto;" class="color-option" data-color="white">White</a>
+                                        <a href="#" style="background-color:#444643;margin-left:auto;" class="color-option" data-color="yellow">Yellow</a>
+                                        <a href="#" style="background-color:#444643;margin-left:auto;" class="color-option" data-color="blue">Blue</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="col-lg-4 col-md-6 col-sm-6" class = "black-shirt with-person">
                             <div class="product__item sale">
                                 <div class="product__item__pic set-bg" data-setbg="img/product/product-5.jpg" style="border: 1px solid #6f6859;">                                    
                                 </div>
@@ -267,7 +262,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="col-lg-4 col-md-6 col-sm-6" class = "black-shirt with-person">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="img/product/product-6.jpg" style="border: 1px solid #6f6859;">                                   
                                 </div>
@@ -278,7 +273,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="col-lg-4 col-md-6 col-sm-6" class = "white-shirt logo-shirt">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg" style="border: 1px solid #6f6859;">
                                 </div>
@@ -289,7 +284,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="col-lg-4 col-md-6 col-sm-6" class = "black-shirt logo-shirt">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="img/product/product-8.jpg" style="border: 1px solid #6f6859;">
                                 </div>
@@ -302,18 +297,14 @@
                             </div>
                         </div>
                         
-                        
-                      
-                      
-                       
-                        
+                    
                     </div>
                   
                     </div><!--END NG SHOP1-->
                     
-                    <div class="carousel-item" data-interval="20000" style = "height:auto"> <!--START NG SHOP2-->
+                    <div class="carousel-item caroside-2" data-interval="20000" style = "height:auto"> <!--START NG SHOP2-->
                         <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6" class="black-shirt colorful-shirt ">
                                 <div class="product__item sale">
                                     <div class="product__item__pic set-bg" data-setbg="img/product/product-9.jpg" style="border: 1px solid #6f6859;">
                                     </div>
@@ -324,7 +315,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6" class = "yellow-shirt colorful-shirt">
                                 <div class="product__item sale">
                                     <div class="product__item__pic set-bg" data-setbg="img/product/product-10.jpg" style="border: 1px solid #6f6859;">
                                     </div>
@@ -335,7 +326,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6" class="blue-shirt colorful-shirt">
                                 <div class="product__item sale">
                                     <div class="product__item__pic set-bg" data-setbg="img/product/product-11.jpg" style="border: 1px solid #6f6859;">
                                     </div>
@@ -346,7 +337,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6" class ="white-shirt logo-shirt">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="img/product/product-12.jpg" style="border: 1px solid #6f6859;">
                                     </div>
@@ -357,7 +348,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6" class = "white-shirt simplistic-shirt">
                                 <div class="product__item sale">
                                     <div class="product__item__pic set-bg" data-setbg="img/product/product-15.jpg" style="border: 1px solid #6f6859;">
                                     </div>
@@ -368,7 +359,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6" class = "white-shirt colorful-shirt">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="img/product/product-13.jpg" style="border: 1px solid #6f6859;">                                
                                     </div>
@@ -379,7 +370,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6" class = "white-shirt colorful-shirt">
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="img/product/product-16.jpg" style="border: 1px solid #6f6859;">                                      
                                     </div>
@@ -460,9 +451,7 @@
             </div>
         </div>
     </footer>
-    <!-- Footer Section End -->
 
-    <!-- Search Begin -->
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch">+</div>
@@ -470,10 +459,7 @@
                 <input type="text" id="search-input" placeholder="Search here.....">
             </form>
         </div>
-    </div>
-    <!-- Search End -->
 
-    <!-- Js Plugins -->
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -491,9 +477,12 @@
     <script src="js/login.js"></script>
     <script>
 
-        function updateUsername(username) {
-          document.getElementById("username").innerText = "Welcome, " + username;
-        }
+function updateUsername(username) {
+  var usernameElements = document.getElementsByClassName("username");
+  for (var i = 0; i < usernameElements.length; i++) {
+    usernameElements[i].innerText = "Welcome, " + username;
+  }
+}
         
  
 
@@ -534,6 +523,7 @@
       xmlhttp.send();
     } 
    </script>
+ 
 
 </body>
 

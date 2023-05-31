@@ -143,9 +143,11 @@ function validate_field(field) {
 }
 
 function updateUsername(username) {
-  document.getElementById("username").innerText = "Welcome, " + username;
+  var usernameElements = document.getElementsByClassName("username");
+  for (var i = 0; i < usernameElements.length; i++) {
+    usernameElements[i].innerText = "Welcome, " + username;
+  }
 }
-
 function logout() {
   firebase
     .auth()
