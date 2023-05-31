@@ -26,6 +26,16 @@
 </head>
 
 <body>
+
+        <!-- Add to Cart Operation Begin  -->
+        
+        <!-- Add to Cart Operation End-->
+
+
+
+
+
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
