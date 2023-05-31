@@ -35,13 +35,17 @@
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
-        <div class="offcanvas__links">
-                <a id = "respsign" href="login.html">Sign in</a>
-                <a id = "respout" href="index.html">Logout</a>
+            <div class="offcanvas__links">
+                <a id="logout-resp" type  = "button" onclick = "logout()" style="cursor: pointer;">Log Out</a>
+                <a id="login-resp" href  = "login.html">Sign In</a>
+                <a id="or-resp" style = "font-style: italic;">or</a>
+                <a id="register-resp" href  = "register.html">Sign Up</a>
             </div>
+           
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
+            <p id="username" style = "font-weight:bold; font-size: 15px"></p>
         </div>
     </div>
     <!-- Offcanvas Menu End -->

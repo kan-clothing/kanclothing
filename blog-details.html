@@ -35,27 +35,16 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
             <div class="offcanvas__links">
-                <a id = "respsign" href="login.html">Sign in</a>
-                <a id = "respout" href="index.html">Logout</a>
+                <a id="logout-resp" type  = "button" onclick = "logout()" style="cursor: pointer;">Log Out</a>
+                <a id="login-resp" href  = "login.html">Sign In</a>
+                <a id="or-resp" style = "font-style: italic;">or</a>
+                <a id="register-resp" href  = "register.html">Sign Up</a>
             </div>
-            <div class="offcanvas__top__hover">
-                <span>Usd <i class="arrow_carrot-down"></i></span>
-                <ul>
-                    <li>USD</li>
-                    <li>EUR</li>
-                    <li>USD</li>
-                </ul>
-            </div>
-        </div>
-        <div class="offcanvas__nav__option">
-            <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-            <a href="#"><img src="img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-            <div class="price">$0.00</div>
+           
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p>Free shipping, 30-day return or refund guarantee.</p>
+            <p id="username" style = "font-weight:bold; font-size: 15px"></p>
         </div>
     </div>
     <!-- Offcanvas Menu End -->

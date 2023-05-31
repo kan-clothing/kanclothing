@@ -24,6 +24,10 @@ function updateLoggedInStatus(status) {
   var contactUs = document.getElementById("contact-us");
   var cartShop = document.getElementById("cart-shop");
   var checkOut = document.getElementById("check-out");
+  var logoutResp = document.getElementById("logout-resp");
+  var loginResp = document.getElementById("login-resp");
+  var orResp = document.getElementById("or-resp");
+  var registerResp = document.getElementById("register-resp");
 
   if (isLoggedIn) {
     console.log('User is logged in!');
@@ -35,7 +39,12 @@ function updateLoggedInStatus(status) {
     if (contactUs) contactUs.style.display = "none";
     if (cartShop) cartShop.style.display = "none";
     if (checkOut) checkOut.style.display = "none";
+    if (logoutResp) logoutResp.style.display = "";
+    if (loginResp) loginResp.style.display = "none";
+    if (orResp) orResp.style.display = "none";
+    if (registerResp) registerResp.style.display = "none";
   } 
+  
   else {
     console.log('User is logged out.');
     if (loginLink) loginLink.style.display = "";
@@ -45,6 +54,10 @@ function updateLoggedInStatus(status) {
     if (contactUs) contactUs.style.display = "";
     if (cartShop) cartShop.style.display = "";
     if (checkOut) checkOut.style.display = "";
+    if (logoutResp) logoutResp.style.display = "none";
+    if (loginResp) loginResp.style.display = "";
+    if (orResp) orResp.style.display = "";
+    if (registerResp) registerResp.style.display = "";
 
     var productAddCart = document.getElementById("product-add-cart");
     if (productAddCart) {
