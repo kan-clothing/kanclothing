@@ -1222,10 +1222,6 @@ switch($display4){
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src = "js/login.js"></script>
     <script src = "js/loggedoutclick.js"></script>
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
       
 </body>

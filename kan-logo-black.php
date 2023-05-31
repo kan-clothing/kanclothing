@@ -1203,32 +1203,6 @@ switch($display4){
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src = "js/login.js"></script>
     <script src = "js/loggedoutclick.js"></script>
-    <script>
-
-function updateUsername(username) {
-  document.getElementById("username").innerText = "Welcome, " + username;
-}
-
-
-
-auth.onAuthStateChanged(function(user) {
-if (user && user.emailVerified) {
-updateLoggedInStatus(true);
-var userId = user.uid;
-var userRef = database.ref('users/' + userId);
-
-userRef.on('value', function(snapshot) {
-var userData = snapshot.val();
-var firstName = userData.firstname; 
-updateUsername(firstName);
-});
-} else {
-updateLoggedInStatus(false);
-}
-});
-
-
-</script>
 </body>
 
 </html>
