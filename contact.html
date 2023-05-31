@@ -26,34 +26,6 @@
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-    <script src = "js/login.js"></script>
-    <script>
-        // Wait for the DOM to load
-        document.addEventListener('DOMContentLoaded', function() {
-          // Get a reference to the name and email input elements
-          var nameInput = document.getElementById('name');
-          var emailInput = document.getElementById('email');
-      
-          // Check if a user is currently authenticated
-          var user = firebase.auth().currentUser;
-          if (user) {
-            var userId = user.uid;
-            var userRef = firebase.database().ref('users/' + userId);
-      
-            userRef.once('value', function(snapshot) {
-              var userData = snapshot.val();
-              if (userData) {
-                // Populate the name and email fields with the retrieved data
-                nameInput.value = userData.firstname + ' ' + userData.lastname;
-                emailInput.value = userData.email;
-              }
-            });
-          }
-        });
-      </script>
-
-    <script src = "js/loggedout.js"></script>
-
 </head>
 
 <body>
@@ -262,48 +234,28 @@
     <script src="js/main.js"></script>
     <script src="js/sendmail.js"></script>
     <script>
-        function updateLoggedInStatus(status) {
-  isLoggedIn = status;
+    window.addEventListener('DOMContentLoaded', function() {
+  var nameInput = document.getElementById('name');
+  var emailInput = document.getElementById('email');
 
-  if (isLoggedIn) {
-    console.log('User is logged in!');
-    var loginLink = document.getElementById("loginLink");
-    var signUpLink = document.getElementById("signUpLink");
-    var logoutLink = document.getElementById("logoutLink");
-    var respsign = document.getElementById("respsign");
-    var respout = document.getElementById("respout");
-    var contactUs = document.getElementById("contact-us");
-    var cartShop = document.getElementById("cart-shop");
-    var checkOut = document.getElementById("check-out");
+  auth.onAuthStateChanged(function(user) {
+    if (user && user.emailVerified) {
+      var userId = user.uid;
+      var userRef = database.ref('users/' + userId);
 
-    if (loginLink) loginLink.style.display = "none";
-    if (signUpLink) signUpLink.style.display = "none";
-    if (logoutLink) logoutLink.style.display = "block";
-    if (respsign) respsign.style.display = "none";
-    if (respout) respout.style.display = "none";
-    if (contactUs) contactUs.style.display = "none";
-    if (cartShop) cartShop.style.display = "none";
-    if (checkOut) checkOut.style.display = "none";
+      userRef.on('value', function(snapshot) {
+        var userData = snapshot.val();
+        var firstName = userData.firstname;
+        var lastName = userData.lastname;
+        var email = userData.email;
 
-
-    var userId = firebase.auth().currentUser.uid;
-    var userRef = database.ref('users/' + userId);
-
-    userRef.on('value', function(snapshot) {
-      var userData = snapshot.val();
-      var firstName = userData.firstname;
-      var lastName = userData.lastname;
-      var email = userData.email;
-
-
-      document.getElementById("name").value = firstName + " " + lastName;
-      document.getElementById("email").value = email;
-    });
-  } else {
-
-  }
-}
-
+        var fullName = firstName + " " + lastName;
+        nameInput.value = fullName;
+        emailInput.value = email;
+      });
+    }
+  });
+});
     </script>
 
 

@@ -139,7 +139,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p><b>Fist Name</b><span>*</span></p>
+                                        <p><b>First Name</b><span>*</span></p>
                                         <input type="text" id="fname" style="border-color:black" >
                                     </div>
                                 </div>
@@ -287,6 +287,28 @@
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src = "js/login.js"></script>
     <script src = "js/loggedout.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+  var fnameInput = document.getElementById('fname');
+  var snameInput = document.getElementById('sname');
+
+  auth.onAuthStateChanged(function(user) {
+    if (user && user.emailVerified) {
+      var userId = user.uid;
+      var userRef = database.ref('users/' + userId);
+
+      userRef.on('value', function(snapshot) {
+        var userData = snapshot.val();
+        var firstName = userData.firstname;
+        var lastName = userData.lastname;
+
+        fnameInput.value = firstName;
+        snameInput.value = lastName;
+      });
+    }
+  });
+})
+    </script>
 
 </body>
 
