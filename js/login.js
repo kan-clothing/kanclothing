@@ -25,8 +25,11 @@ function updateLoggedInStatus(status) {
     document.getElementById("respout")
     document.getElementById("contact-us")
     document.getElementById("cart-shop")
-    document.getElementById("check-out")
-  } else {
+    document.getElementById("check-out")  
+  } 
+
+  
+  else {
     console.log('User is logged out.');
     document.getElementById("loginLink")
     document.getElementById("signUpLink")
@@ -106,6 +109,12 @@ auth.onAuthStateChanged(function(user) {
   function validate_field(field) {
     return field != null && field.length > 0;
   }
+
+  function updateUsername(username) {
+    document.getElementById("username").innerText = "Welcome, " + username;
+  }
+  
+
 
 
   function logout() {
