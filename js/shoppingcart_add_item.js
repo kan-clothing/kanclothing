@@ -27,47 +27,22 @@ function addItemToCart(selected_itemName, selected_itemPrice, selected_itemImage
         <td class="cart__close"><i class="fa fa-close"></i></td>
     `;
 
+    // Set the HTML for the new row
+    newRow.innerHTML = itemHTML;
 
+    // Append the new row to the table
+    table.appendChild(newRow);
 
-
-    // Retrieve the existing cart items from session storage
-    var cartItems = sessionStorage.getItem('cartItems');
-
-    // Parse the existing cart items or initialize an empty array
-    var items = cartItems ? JSON.parse(cartItems) : [];
-
-    // Add the new item to the items array
-    var newItem = {
-        name: selected_itemName,
-        price: selected_itemPrice,
-        image: selected_itemImage
-    };
-    items.push(newItem);
-
-    // Store the updated cart items in session storage
-    sessionStorage.setItem('cartItems', JSON.stringify(items));
-
-        // Set the HTML for the new row
-        newRow.innerHTML = itemHTML;
-
-        // Append the new row to the table
-        table.appendChild(newRow);
-
-
-
-        
-        var closeIcon = newRow.querySelector('.cart__close');
-        closeIcon.addEventListener('click', function() {
-            removeItemFromCart(newRow);
-        });
-    }
-    
-    function removeItemFromCart(row) {
-        // Remove the row from the table
-        row.parentNode.removeChild(row);
-
-
-
-
-
+    // Makes the X icon into a button to remove entry
+    var closeIcon = newRow.querySelector('.cart__close');
+    closeIcon.addEventListener('click', function() {
+        removeItemFromCart(newRow);
+    });
 }
+
+function removeItemFromCart(row) {
+    // Remove the row from the table
+    row.parentNode.removeChild(row);
+}
+
+
