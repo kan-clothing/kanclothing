@@ -87,6 +87,7 @@
                                     <li><a id = "check-out" href="./checkout.html">Check Out</a></li>
                                 </ul>
                             </li>
+                            <li><a href="./blog.html">Blog</a></li>
                             <li><a id = "contact-us" href="./contact.html">Contact Us</a></li>
                         </ul>
                     </nav>
