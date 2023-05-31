@@ -289,8 +289,8 @@
     <script src = "js/loggedout.js"></script>
     <script>
         window.addEventListener('DOMContentLoaded', function() {
-  var fnameInput = document.getElementById('fname');
-  var snameInput = document.getElementById('sname');
+       var fnameInput = document.getElementById('fname');
+       var snameInput = document.getElementById('sname');
 
   auth.onAuthStateChanged(function(user) {
     if (user && user.emailVerified) {
