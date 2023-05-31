@@ -16,44 +16,36 @@ var isLoggedIn = false;
 function updateLoggedInStatus(status) {
   isLoggedIn = status;
 
+  var loginLink = document.getElementById("loginLink");
+  var signUpLink = document.getElementById("signUpLink");
+  var logoutLink = document.getElementById("logoutLink");
+  var respsign = document.getElementById("respsign");
+  var respout = document.getElementById("respout");
+  var contactUs = document.getElementById("contact-us");
+  var cartShop = document.getElementById("cart-shop");
+  var checkOut = document.getElementById("check-out");
+
   if (isLoggedIn) {
     console.log('User is logged in!');
-    var loginLink = document.getElementById("loginLink");
-    var signUpLink = document.getElementById("signUpLink");
-    var logoutLink = document.getElementById("logoutLink");
-    var respsign = document.getElementById("respsign");
-    var respout = document.getElementById("respout");
-    var contactUs = document.getElementById("contact-us");
-    var cartShop = document.getElementById("cart-shop");
-    var checkOut = document.getElementById("check-out");
-
     if (loginLink) loginLink.style.display = "none";
     if (signUpLink) signUpLink.style.display = "none";
-    if (logoutLink) logoutLink.style.display = "block";
+    if (logoutLink) logoutLink.style.display = ""; // Show logout link
     if (respsign) respsign.style.display = "none";
     if (respout) respout.style.display = "none";
     if (contactUs) contactUs.style.display = "none";
     if (cartShop) cartShop.style.display = "none";
     if (checkOut) checkOut.style.display = "none";
-  } else {
+  } 
+  else {
     console.log('User is logged out.');
-    var loginLink = document.getElementById("loginLink");
-    var signUpLink = document.getElementById("signUpLink");
-    var logoutLink = document.getElementById("logoutLink");
-    var respsign = document.getElementById("respsign");
-    var respout = document.getElementById("respout");
-    var contactUs = document.getElementById("contact-us");
-    var cartShop = document.getElementById("cart-shop");
-    var checkOut = document.getElementById("check-out");
-
-    if (loginLink) loginLink.style.display = "block";
-    if (signUpLink) signUpLink.style.display = "block";
-    if (logoutLink) logoutLink.style.display = "none";
-    if (respsign) respsign.style.display = "block";
-    if (respout) respout.style.display = "block";
-    if (contactUs) contactUs.style.display = "block";
-    if (cartShop) cartShop.style.display = "block";
-    if (checkOut) checkOut.style.display = "block";
+    if (loginLink) loginLink.style.display = "";
+    if (signUpLink) signUpLink.style.display = "";
+    if (logoutLink) logoutLink.style.display = "none"; // Hide logout link
+    if (respsign) respsign.style.display = "";
+    if (respout) respout.style.display = "";
+    if (contactUs) contactUs.style.display = "";
+    if (cartShop) cartShop.style.display = "";
+    if (checkOut) checkOut.style.display = "";
 
     var productAddCart = document.getElementById("product-add-cart");
     if (productAddCart) {
@@ -63,6 +55,7 @@ function updateLoggedInStatus(status) {
     }
   }
 }
+
 
 auth.onAuthStateChanged(function(user) {
   if (user && user.emailVerified) {
