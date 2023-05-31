@@ -18,118 +18,138 @@ function updateLoggedInStatus(status) {
 
   if (isLoggedIn) {
     console.log('User is logged in!');
-    document.getElementById("loginLink").style.display = "none";
-    document.getElementById("signUpLink").style.display = "none";
-    document.getElementById("logoutLink").style.display = "block";
-    document.getElementById("respsign").style.display = "none";
-    document.getElementById("respout")
-    document.getElementById("contact-us")
-    document.getElementById("cart-shop")
-    document.getElementById("check-out")  
-  } 
+    var loginLink = document.getElementById("loginLink");
+    var signUpLink = document.getElementById("signUpLink");
+    var logoutLink = document.getElementById("logoutLink");
+    var respsign = document.getElementById("respsign");
+    var respout = document.getElementById("respout");
+    var contactUs = document.getElementById("contact-us");
+    var cartShop = document.getElementById("cart-shop");
+    var checkOut = document.getElementById("check-out");
 
-  
-  else {
+    if (loginLink) loginLink.style.display = "none";
+    if (signUpLink) signUpLink.style.display = "none";
+    if (logoutLink) logoutLink.style.display = "block";
+    if (respsign) respsign.style.display = "none";
+    if (respout) respout.style.display = "none";
+    if (contactUs) contactUs.style.display = "none";
+    if (cartShop) cartShop.style.display = "none";
+    if (checkOut) checkOut.style.display = "none";
+  } else {
     console.log('User is logged out.');
-    document.getElementById("loginLink")
-    document.getElementById("signUpLink")
-    document.getElementById("logoutLink").style.display = "none";
-    document.getElementById("respsign")
-    document.getElementById("respout").style.display = "none";
-    document.getElementById("contact-us").style.display = "none";
-    document.getElementById("cart-shop").style.display = "none";
-    document.getElementById("check-out").style.display = "none";
-    document.getElementById("product-add-cart").addEventListener("click", function() {
-      window.location.href = "login.html";
-    });
+    var loginLink = document.getElementById("loginLink");
+    var signUpLink = document.getElementById("signUpLink");
+    var logoutLink = document.getElementById("logoutLink");
+    var respsign = document.getElementById("respsign");
+    var respout = document.getElementById("respout");
+    var contactUs = document.getElementById("contact-us");
+    var cartShop = document.getElementById("cart-shop");
+    var checkOut = document.getElementById("check-out");
+
+    if (loginLink) loginLink.style.display = "block";
+    if (signUpLink) signUpLink.style.display = "block";
+    if (logoutLink) logoutLink.style.display = "none";
+    if (respsign) respsign.style.display = "block";
+    if (respout) respout.style.display = "block";
+    if (contactUs) contactUs.style.display = "block";
+    if (cartShop) cartShop.style.display = "block";
+    if (checkOut) checkOut.style.display = "block";
+
+    var productAddCart = document.getElementById("product-add-cart");
+    if (productAddCart) {
+      productAddCart.addEventListener("click", function() {
+        window.location.href = "login.html";
+      });
+    }
   }
 }
 
 auth.onAuthStateChanged(function(user) {
   if (user && user.emailVerified) {
     updateLoggedInStatus(true);
+    var userId = user.uid;
+    var userRef = database.ref('users/' + userId);
+
+    userRef.on('value', function(snapshot) {
+      var userData = snapshot.val();
+      var firstName = userData.firstname; 
+      updateUsername(firstName);
+
+      console.log('User logged in:', user.email); 
+    });
   } else {
     updateLoggedInStatus(false);
+    console.log('User not logged in');
   }
 });
 
+function login() {
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
 
-  
-  function login() {
-    
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-  
-    if (!validate_field(email) || !validate_email(email)) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-  
-    if (!validate_field(password)) {
-      alert('Please enter your password.');
-      return;
-    }
-  
-    auth.signInWithEmailAndPassword(email, password)
-      .then(function() {
-        var user = auth.currentUser;
-  
-        if (user.emailVerified) {
-          var database_ref = database.ref();
-  
-          var user_data = {
-            last_login: Date.now()
-          };
-          localStorage.setItem("isLoggedIn", true);
-
-          database_ref.child('users/' + user.uid).update(user_data);
-          window.history.back();
-  
-        } else {
-          auth.signOut();
-          alert('Email not verified. Please check your email and verify your account.');
-        }
-      })
-      .catch(function(error) {
-        var error_code = error.code;
-        var error_message = error.message;
-        alert(error_code);
-      });
-  }
-  
-  function validate_email(email) {
-    expression = /^[^@]+@\w+(\.\w+)+\w$/;
-    return expression.test(email);
-  }
-  
-  function validate_password(password) {
-    return password.length >= 6;
-  }
-  
-  function validate_field(field) {
-    return field != null && field.length > 0;
+  if (!validate_field(email) || !validate_email(email)) {
+    alert('Please enter a valid email address.');
+    return;
   }
 
-  function updateUsername(username) {
-    document.getElementById("username").innerText = "Welcome, " + username;
-  }
-  
-
-
-
-  function logout() {
-    firebase
-      .auth()
-      .signOut()
-      .then(function () {
-        window.location.href = 'index.html'; // Replace with the desired URL to redirect after logout
-        updateLoggedInStatus(false); // Update logged-in status to false
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  if (!validate_field(password)) {
+    alert('Please enter your password.');
+    return;
   }
 
+  auth.signInWithEmailAndPassword(email, password)
+    .then(function() {
+      var user = auth.currentUser;
 
+      if (user.emailVerified) {
+        var database_ref = database.ref();
 
-  
+        var user_data = {
+          last_login: Date.now()
+        };
+        localStorage.setItem("isLoggedIn", true);
+
+        database_ref.child('users/' + user.uid).update(user_data);
+        window.history.back();
+
+      } else {
+        auth.signOut();
+        alert('Email not verified. Please check your email and verify your account.');
+      }
+    })
+    .catch(function(error) {
+      var error_code = error.code;
+      var error_message = error.message;
+      alert(error_code);
+    });
+}
+
+function validate_email(email) {
+  expression = /^[^@]+@\w+(\.\w+)+\w$/;
+  return expression.test(email);
+}
+
+function validate_password(password) {
+  return password.length >= 6;
+}
+
+function validate_field(field) {
+  return field != null && field.length > 0;
+}
+
+function updateUsername(username) {
+  document.getElementById("username").innerText = "Welcome, " + username;
+}
+
+function logout() {
+  firebase
+    .auth()
+    .signOut()
+    .then(function () {
+      window.location.href = 'index.html'; // Replace with the desired URL to redirect after logout
+      updateLoggedInStatus(false); // Update logged-in status to false
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}

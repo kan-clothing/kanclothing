@@ -23,8 +23,6 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
-    
-
 
 </head>
 
@@ -71,7 +69,11 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
+<<<<<<< Updated upstream
                             <p id = "username"></p>
+=======
+                            <p id="username" style="color:#ffffff;"></p>
+>>>>>>> Stashed changes
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5" style="color:#ffffff;">
@@ -79,13 +81,14 @@
                             <div class="header__top__links">
                                 <a id="loginLink" href="./login.html">Login</a>
                                 <a id="signUpLink" href="./register.html">Sign up</a>
-                                <a id="logoutLink" type = "button" onclick = "logout()" style="cursor: pointer;">Logout</a>
+                                <a id="logoutLink" type="button" onclick="logout()" style="cursor: pointer;">Logout</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
@@ -470,7 +473,7 @@
                     <div class="footer__widget">
                         <h6>Services</h6>
                         <ul>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
                          
                         </ul>
                     </div>
@@ -505,16 +508,18 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/popper.min.js"></script>
-    
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
     <script src="js/login.js"></script>
     <script>
+
         function updateUsername(username) {
           document.getElementById("username").innerText = "Welcome, " + username;
         }
+        
+ 
+
         auth.onAuthStateChanged(function(user) {
   if (user && user.emailVerified) {
     updateLoggedInStatus(true);
@@ -530,6 +535,7 @@
     updateLoggedInStatus(false);
   }
    });
+        
         </script>
    
 
