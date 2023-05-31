@@ -30,7 +30,7 @@ function addItemToCart(selected_itemName, selected_itemPrice, selected_itemImage
     // Set the HTML for the new row
     newRow.innerHTML = itemHTML;
 
-    // Append the new row to the table
+    // Append the new row to the tables
     table.appendChild(newRow);
 
     // Makes the X icon into a button to remove entry
