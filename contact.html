@@ -261,6 +261,50 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/sendmail.js"></script>
+    <script>
+        function updateLoggedInStatus(status) {
+  isLoggedIn = status;
+
+  if (isLoggedIn) {
+    console.log('User is logged in!');
+    var loginLink = document.getElementById("loginLink");
+    var signUpLink = document.getElementById("signUpLink");
+    var logoutLink = document.getElementById("logoutLink");
+    var respsign = document.getElementById("respsign");
+    var respout = document.getElementById("respout");
+    var contactUs = document.getElementById("contact-us");
+    var cartShop = document.getElementById("cart-shop");
+    var checkOut = document.getElementById("check-out");
+
+    if (loginLink) loginLink.style.display = "none";
+    if (signUpLink) signUpLink.style.display = "none";
+    if (logoutLink) logoutLink.style.display = "block";
+    if (respsign) respsign.style.display = "none";
+    if (respout) respout.style.display = "none";
+    if (contactUs) contactUs.style.display = "none";
+    if (cartShop) cartShop.style.display = "none";
+    if (checkOut) checkOut.style.display = "none";
+
+
+    var userId = firebase.auth().currentUser.uid;
+    var userRef = database.ref('users/' + userId);
+
+    userRef.on('value', function(snapshot) {
+      var userData = snapshot.val();
+      var firstName = userData.firstname;
+      var lastName = userData.lastname;
+      var email = userData.email;
+
+
+      document.getElementById("name").value = firstName + " " + lastName;
+      document.getElementById("email").value = email;
+    });
+  } else {
+
+  }
+}
+
+    </script>
 
 
 
