@@ -332,6 +332,27 @@
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src = "js/login.js"></script>
     <script src = "js/loggedout.js"></script>
+
+
+
+    <script>
+        // JavaScript code to handle quantity changesss
+        function updateQuantity(productID, newCartQuantity) {
+            // Make an AJAX request to update the quantity in the database
+            var cartUpdater = new XMLHttpRequest();
+            cartUpdater.open('POST', 'update_quantity.php', true);
+            cartUpdater.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            cartUpdater.onreadystatechange = function() {
+                if (cartUpdater.readyState == 4 && cartUpdater.status == 200) {
+                    // Handle the response
+                    // ...
+                }
+            };
+            cartUpdater.send('productId=' + productID + '&newQuantity=' + newCartQuantity);
+        }
+        </script>
+        
+
 </body>
 
 </html>
