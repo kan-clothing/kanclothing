@@ -477,9 +477,12 @@
     <script src="js/login.js"></script>
     <script>
 
-        function updateUsername(username) {
-          document.getElementById("username").innerText = "Welcome, " + username;
-        }
+function updateUsername(username) {
+  var usernameElements = document.getElementsByClassName("username");
+  for (var i = 0; i < usernameElements.length; i++) {
+    usernameElements[i].innerText = "Welcome, " + username;
+  }
+}
         
  
 
