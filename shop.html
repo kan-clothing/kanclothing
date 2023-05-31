@@ -218,7 +218,7 @@
                                 </div>
                                 <div class="product__item__text" >
                                     <h6>Kan Desolated - Black</h6>
-                                    <a  href="kan-desolated-black.php " class="add-cart">View Product</a>
+                                    <a href="kan-desolated-black.php " class="add-cart">View Product</a>
                                     <h5>₱549</h5>
                                 </div>
                             </div>
@@ -401,7 +401,7 @@
                                 <ol class="carousel-indicators">
                                 <div id="product__pagination">
                                     <button class="shopnav active" data-target="#shop-kan" data-slide-to="0" >1</button>
-                                    <button class="shopnav" data-target="#shop-kan" data-slide-to="1">2</button>
+                                    <button class="shopnav" id="add-to-cart-btn">2</button>
                                 </div>
                                 </ol>
                             </div>
@@ -489,6 +489,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/shoppingcart_add_item.js"></script>
+    
     <script>
 
         function updateUsername(username) {
@@ -534,6 +536,12 @@
       xmlhttp.send();
     } 
    </script>
+
+
+
+
+
+
 
 </body>
 
