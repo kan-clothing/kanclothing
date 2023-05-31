@@ -52,7 +52,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
-                        <div class="header__top__left">
+                    <div class="header__top__left">
+                            <p id = "username"></p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
@@ -1200,7 +1201,32 @@ switch($display4){
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src = "js/login.js"></script>
     <script src = "js/loggedoutclick.js"></script>
-      
+    <script>
+
+function updateUsername(username) {
+  document.getElementById("username").innerText = "Welcome, " + username;
+}
+
+
+
+auth.onAuthStateChanged(function(user) {
+if (user && user.emailVerified) {
+updateLoggedInStatus(true);
+var userId = user.uid;
+var userRef = database.ref('users/' + userId);
+
+userRef.on('value', function(snapshot) {
+var userData = snapshot.val();
+var firstName = userData.firstname; 
+updateUsername(firstName);
+});
+} else {
+updateLoggedInStatus(false);
+}
+});
+
+
+</script>
 </body>
 
 </html>
