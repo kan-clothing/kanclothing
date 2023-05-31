@@ -313,7 +313,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div  class = "yellow-shirt colorful-shirt col-lg-4 col-md-6 col-sm-6">
+                            <div class="yellow-shirt colorful-shirt col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item sale">
                                     <div class="product__item__pic set-bg" data-setbg="img/product/product-10.jpg" style="border: 1px solid #6f6859;">
                                     </div>
@@ -324,7 +324,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div  class="blue-shirt colorful-shirt col-lg-4 col-md-6 col-sm-6">
+                            <div class="blue-shirt colorful-shirt col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item sale">
                                     <div class="product__item__pic set-bg" data-setbg="img/product/product-11.jpg" style="border: 1px solid #6f6859;">
                                     </div>
@@ -526,50 +526,55 @@ function updateUsername(username) {
 
 
    <script>
-    const colorRadioButtons = document.getElementById('color-radio-buttons');
-    colorRadioButtons.addEventListener('click', function (event) {
-        const selectedColor = event.target.value;
-        const carouselItems = document.querySelectorAll('.carousel-item');
+   const colorRadioButtons = document.getElementById('color-radio-buttons');
+   colorRadioButtons.addEventListener('click', function (event) {
+  const selectedColor = event.target.value;
+  const carouselItems = document.querySelectorAll('.carousel-item');
 
-        carouselItems.forEach(function (item) {
-            const blackShirts = item.querySelectorAll('.black-shirt');
-            const whiteShirts = item.querySelectorAll('.white-shirt');
-            const yellowShirts = item.querySelectorAll('.yellow-shirt');
-            const blueShirts = item.querySelectorAll('.blue-shirt');
-    
-            if (selectedColor === 'black-click') {
-                showDivs(blackShirts);
-                hideDivs(whiteShirts);
-                hideDivs(yellowShirts);
-                hideDivs(blueShirts);
-            } else if (selectedColor === 'white-click') {
-                hideDivs(blackShirts);
-                showDivs(whiteShirts);
-                hideDivs(yellowShirts);
-                hideDivs(blueShirts);
-            } else if (selectedColor === 'yellow-click') {
-                hideDivs(blackShirts);
-                hideDivs(whiteShirts);
-                showDivs(yellowShirts);
-                hideDivs(blueShirts);
-            } else if (selectedColor === 'blue-click') {
-                hideDivs(blackShirts);
-                hideDivs(whiteShirts);
-                hideDivs(yellowShirts);
-                showDivs(blueShirts);
-            }
-        });
-    });
-    function showDivs(elements) {
-        elements.forEach(function (element) {
-            element.style.display = 'block';
-        });
+  carouselItems.forEach(function (item) {
+    const blackShirts = item.querySelectorAll('.black-shirt');
+    const whiteShirts = item.querySelectorAll('.white-shirt');
+    const yellowShirts = item.querySelectorAll('.yellow-shirt');
+    const blueShirts = item.querySelectorAll('.blue-shirt');
+
+    if (selectedColor === 'black-click') {
+      showDivs(blackShirts);
+      hideDivs(whiteShirts);
+      hideDivs(yellowShirts);
+      hideDivs(blueShirts);
+    } else if (selectedColor === 'white-click') {
+      hideDivs(blackShirts);
+      showDivs(whiteShirts);
+      hideDivs(yellowShirts);
+      hideDivs(blueShirts);
+    } else if (selectedColor === 'yellow-click') {
+      hideDivs(blackShirts);
+      hideDivs(whiteShirts);
+      showDivs(yellowShirts);
+      showDivs(yellowShirts);
+      hideDivs(blueShirts);
+    } else if (selectedColor === 'blue-click') {
+      hideDivs(blackShirts);
+      hideDivs(whiteShirts);
+      hideDivs(yellowShirts);
+      showDivs(blueShirts);
+      showDivs(blueShirts);
     }
-    function hideDivs(elements) {
-        elements.forEach(function (element) {
-            element.style.display = 'none';
-        });
-    }
+  });
+});
+
+function showDivs(elements) {
+  elements.forEach(function (element) {
+    element.style.display = '';
+  });
+}
+
+function hideDivs(elements) {
+  elements.forEach(function (element) {
+    element.style.display = 'none';
+  });
+}
+
 </script>
 
 
