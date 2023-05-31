@@ -52,7 +52,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
-                    <div class="header__top__left">
+                        <div class="header__top__left">
                             <p id = "username"></p>
                         </div>
                     </div>
@@ -77,18 +77,21 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
-                        <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                    <ul>
+                            <li><a href="./index.html">Home</a></li>
+                            <li class="active"><a href="./shop.html">Shop</a>
                                 <ul class="dropdown">
-                                    <li><a href="./about.html">About Us</a></li>
-                                    <li><a  id = "cart-shop" href="./shopping-cart.html">Shopping Cart</a></li>
-                                    <li><a id = "check-out" href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./shopping-cart.html">Shopping Cart</a></li>
+                                    <li><a href="./checkout.html">Check Out</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a id = "contact-us" href="./contact.html">Contact Us</a></li>
+                            <li><a href="#">About</a>
+                                <ul class="dropdown">
+                                    <li><a href="./about.html">About Us</a></li>
+                                    <li><a href="./blog.html">Collections</a> </li>
+                               </ul>
+                            </li>
+                            <li><a href="./contact.html">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -1214,37 +1217,11 @@ switch($display4){
     }
 
       </script>
-     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src = "js/login.js"></script>
     <script src = "js/loggedoutclick.js"></script>
-    <script>
-
-        function updateUsername(username) {
-          document.getElementById("username").innerText = "Welcome, " + username;
-        }
-        
- 
-        
-        auth.onAuthStateChanged(function(user) {
-  if (user && user.emailVerified) {
-    updateLoggedInStatus(true);
-    var userId = user.uid;
-    var userRef = database.ref('users/' + userId);
-
-    userRef.on('value', function(snapshot) {
-      var userData = snapshot.val();
-      var firstName = userData.firstname; 
-      updateUsername(firstName);
-    });
-  } else {
-    updateLoggedInStatus(false);
-  }
-   });
-        
-     
-        </script>
 
       
 </body>
