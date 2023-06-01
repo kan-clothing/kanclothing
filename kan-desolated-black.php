@@ -195,7 +195,7 @@
                                         <input type="text" value="1">
                                     </div>
                                 </div>
-                                <button type = "button" id = "product-add-cart" href="" class="primary-btn">add to cart</button>
+                                <button type = "button" id = "product-add-cart" href="" onclick="addToCart()" class="primary-btn">add to cart</button>
                             </div>
                             <div class="product__details__last__option">
                                 <h5><span>Guaranteed Safe Checkout</span></h5>
@@ -1227,7 +1227,13 @@ switch($display4){
     <script src = "js/login.js"></script>
     <script src = "js/loggedoutclick.js"></script>
 
+    <script>
+        var itemName = 'Kan Desolated - Black';
+        var itemPrice = '549';
+        var itemImage = 'img/shop-details/deso-prev1.jpg';
       
+        addItemToCart(itemName, itemPrice, itemImage);
+      </script>
 </body>
 
 </html>
