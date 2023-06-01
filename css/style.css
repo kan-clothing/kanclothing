@@ -2260,13 +2260,19 @@ ol {
 
 .team__item {
 	margin-bottom: 30px;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;	
+	display:block;
 }
+
 
 .team__item img {
 	min-width: 100%;
+	
 	margin-bottom: 25px;
+	
 }
-
 .team__item h4 {
 	color: #111111;
 	font-weight: 700;
@@ -2277,6 +2283,15 @@ ol {
 	font-size: 15px;
 	display: block;
 	color: #b7b7b7;
+}
+.team__item p{
+	text-align:justify;
+	color: #111111;
+	font-size: 20px;
+	line-height: 30px;
+	padding-top: 12px;
+	margin-bottom: 25px;
+
 }
 
 /*---------------------
