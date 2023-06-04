@@ -56,6 +56,7 @@
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
             <p class="username" style = "font-weight:bold; font-size: 15px"></p>
+            <a class = "admin-button" href = "admin.html">ADMIN PAGE</a>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -68,6 +69,7 @@
                     <div class="col-lg-6 col-md-7">
                     <div class="header__top__left">
                             <p class = "username"></p>
+                            <a class = "admin-button" href = "admin.html">ADMIN PAGE</a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">

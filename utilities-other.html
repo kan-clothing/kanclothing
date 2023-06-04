@@ -19,9 +19,24 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        #blocker {
+          background-color: black;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          z-index: 9999;
+        }
+        body:not(.loaded) {
+      visibility: hidden;
+    }
+      </style>
+
 
 </head>
-
+<div id = "blocker"></div>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -500,6 +515,35 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <script src="js/login.js"></script>
+    <script>
+  window.addEventListener('load', function () {
+      firebase.auth().onAuthStateChanged(function (user) {
+        if (user && user.emailVerified) {
+          var userId = user.uid;
+          var userRef = firebase.database().ref('users/' + userId);
+
+          userRef.once('value', function (snapshot) {
+            var userData = snapshot.val();
+            if (userData && userData.admin === 1) {
+              document.getElementById('blocker').style.display = 'none'; 
+              document.body.classList.add('loaded');
+            } else {
+              redirectToIndex();
+            }
+          });
+        } else {
+          redirectToIndex();
+        }
+      });
+    });
+    function redirectToIndex() {
+      window.location.href = 'index.html';
+    }
+    </script>
 
 </body>
 
