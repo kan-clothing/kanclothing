@@ -161,4 +161,21 @@ function logout() {
     });
 }
 
+function forgotPassword(auth) {
+  var email = document.getElementById('email-enter').value;
 
+  if (!validate_field(email) || !validate_email(email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  auth.sendPasswordResetEmail(email)
+    .then(function() {
+      alert('Password reset email sent. Please check your email to reset your password.');
+    })
+    .catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage);
+    });
+}
