@@ -119,15 +119,8 @@ function login() {
       if (user.emailVerified) {
         var database_ref = database.ref();
 
-        var currentDate = new Date();
-        var lastLogin = currentDate.toLocaleString('en-US', {
-          hour: 'numeric',
-          minute: 'numeric',
-          hour12: true
-        }) + ' ' + currentDate.toDateString();
-
         var user_data = {
-          last_login: lastLogin
+          last_login: Date.now()
         };
         localStorage.setItem("isLoggedIn", true);
 
@@ -145,7 +138,6 @@ function login() {
       alert(error_code);
     });
 }
-
 
 function validate_email(email) {
   expression = /^[^@]+@\w+(\.\w+)+\w$/;
