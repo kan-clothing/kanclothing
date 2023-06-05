@@ -146,6 +146,7 @@ function login() {
     });
 }
 
+
 function validate_email(email) {
   expression = /^[^@]+@\w+(\.\w+)+\w$/;
   return expression.test(email);
