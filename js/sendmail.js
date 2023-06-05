@@ -12,24 +12,25 @@ btn.addEventListener('click', function(e) {
 
     Email.send({
         Host: "smtp.elasticemail.com",
-        Username: "kanclothingph1@gmail.com",
-        Password: "5A9752781AFC5E4478BF8F10BB7AACF32FDC",
-        To: "kanclothingph1@gmail.com",
+        Username: "antoniomabanag3000@gmail.com",
+        Password: "48FB03EEA37BF530C1A05A623888A6A54CC7",
+        To: "antoniomabanag3000@gmail.com",
         From: "kanclothingph1@gmail.com",
         Subject: subject,
         Body: mail,
     }).then(
         function(emailMessage) {
             console.log('Email sent successfully');
+            var dateSent = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' }) + ' at ' + new Date().toLocaleDateString('en-US');
             var newNodeRef = database.ref('mail').push();
             newNodeRef.set({
                 name: name,
                 email: email,
                 subject: subject,
-                message: message
+                message: message,
+                "date-sent": dateSent
             }).then(function () {
                 document.getElementById('name').value = '';
-                document.getElementById('email').value = '';
                 document.getElementById('subject').value = '';
                 document.getElementById('message').value = '';
                 alert('Message sent successfully!');
