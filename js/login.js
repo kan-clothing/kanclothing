@@ -7,6 +7,7 @@ var firebaseConfig = {
   messagingSenderId: "943100252975",
   appId: "1:943100252975:web:0268951ffea192d27e47da"
 };
+
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
@@ -76,6 +77,11 @@ auth.onAuthStateChanged(function (user) {
       } else {
         hideAdminButton();
       }
+    });
+
+    // Update login status in the database
+    userRef.update({ loginStatus: 1 }).catch(function (error) {
+      console.log('Error updating login status:', error);
     });
   } else {
     updateLoggedInStatus(false);
@@ -160,16 +166,35 @@ function updateUsername(username) {
 }
 
 function logout() {
-  firebase
-    .auth()
-    .signOut()
-    .then(function () {
-      window.location.href = 'index.html';
-      updateLoggedInStatus(false);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  var user = auth.currentUser;
+
+  if (user) {
+    var userId = user.uid;
+    var userRef = database.ref('users/' + userId);
+    userRef.update({ loginStatus: 0 })
+      .then(function() {
+        firebase.auth().signOut()
+          .then(function() {
+            updateLoggedInStatus(false); 
+            window.location.href = 'index.html';
+          })
+          .catch(function(error) {
+            console.log('Error signing out:', error);
+          });
+      })
+      .catch(function(error) {
+        console.log('Error updating login status:', error);
+      });
+  } else {
+    firebase.auth().signOut()
+      .then(function() {
+        updateLoggedInStatus(false); 
+        window.location.href = 'index.html';
+      })
+      .catch(function(error) {
+        console.log('Error signing out:', error);
+      });
+  }
 }
 
 function forgotPassword() {

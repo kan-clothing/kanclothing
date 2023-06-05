@@ -12,6 +12,7 @@ var firebaseConfig = {
   const auth = firebase.auth();
   const database = firebase.database();
   
+
   async function registerNow() {
     var email = document.getElementById('email').value;
     var fname = document.getElementById('firstname').value;
@@ -38,14 +39,15 @@ var firebaseConfig = {
   
       await user.sendEmailVerification();
   
-      var database_ref = database.ref();
+      var database_ref = database.ref('users/' + user.uid); 
       var user_data = {
         email: email,
         firstname: fname,
         lastname: lname,
-        last_login: Date.now()
+        last_login: new Date().toString(), 
+        loginStatus: 0 
       };
-      await database_ref.child('users/' + user.uid).set(user_data);
+      await database_ref.set(user_data); 
   
       alert('User Created. Please check your email for verification.');
       window.location.href = 'login.html';
