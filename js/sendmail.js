@@ -6,9 +6,9 @@ btn.addEventListener('click', function(e) {
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var subject = document.getElementById('subject').value;
-    var message1 = document.getElementById('message').value;
+    var message = document.getElementById('message').value;
 
-    var mail = 'name: ' + name + '<br/> email: ' + email + '<br/> subject: ' + subject + '<br/> message: ' + message1;
+    var mail = 'name: ' + name + '<br/> email: ' + email + '<br/> subject: ' + subject + '<br/> message: ' + message;
 
     Email.send({
         Host: "smtp.elasticemail.com",
@@ -19,8 +19,29 @@ btn.addEventListener('click', function(e) {
         Subject: subject,
         Body: mail,
     }).then(
-        message => alert("Email sent successfully")
+        function(emailMessage) {
+            console.log('Email sent successfully');
+            var newNodeRef = database.ref('mail').push();
+            newNodeRef.set({
+                name: name,
+                email: email,
+                subject: subject,
+                message: message
+            }).then(function () {
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('subject').value = '';
+                document.getElementById('message').value = '';
+                alert('Message sent successfully!');
+            }).catch(function (error) {
+                console.log('Error sending message:', error);
+                alert('An error occurred while sending the message. Please try again.');
+            });
+        }
     ).catch(
-        error => alert("Error: " + error)
+        function(error) {
+            console.log('Error sending email:', error);
+            alert('Error: ' + error);
+        }
     );
 });
