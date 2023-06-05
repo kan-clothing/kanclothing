@@ -119,8 +119,15 @@ function login() {
       if (user.emailVerified) {
         var database_ref = database.ref();
 
+        var currentDate = new Date();
+        var lastLogin = currentDate.toLocaleString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true
+        }) + ' ' + currentDate.toDateString();
+
         var user_data = {
-          last_login: Date.now()
+          last_login: lastLogin
         };
         localStorage.setItem("isLoggedIn", true);
 
