@@ -1,3 +1,4 @@
+
 function getUsersFromDatabase() {
     var usersRef = database.ref('users');
   
@@ -78,4 +79,3 @@ function getUsersFromDatabase() {
     });
   }
   getUsersFromDatabase();
-  
