@@ -31,27 +31,21 @@ function getUsersFromDatabase() {
         adminStatusCells.forEach(function(cell) {
           cell.addEventListener('click', function(event) {
             var userId = event.target.dataset.userid;
-  
             var inputElement = document.createElement('input');
             inputElement.type = 'number';
             inputElement.min = '0';
             inputElement.max = '1';
             inputElement.value = event.target.innerText;
             inputElement.classList.add('admin-input');
-  
             event.target.innerHTML = '';
             event.target.appendChild(inputElement);
-  
             inputElement.focus();
-  
             var enterButton = document.createElement('button');
             enterButton.innerText = 'Enter';
             enterButton.classList.add('enter-button');
             event.target.appendChild(enterButton);
-  
             enterButton.addEventListener('click', function() {
               var newAdminStatus = parseInt(inputElement.value);
-  
               usersRef.child(userId).update({ admin: newAdminStatus })
                 .then(function() {
                   console.log('Admin status updated successfully!');
@@ -59,13 +53,16 @@ function getUsersFromDatabase() {
                 .catch(function(error) {
                   console.log('Error updating admin status:', error);
                 });
-  
               event.target.innerHTML = newAdminStatus;
             });
-  
+            inputElement.addEventListener('input', function() {
+              var value = inputElement.value;
+              if (value !== '0' && value !== '1') {
+                inputElement.value = '';
+              }
+            });
             inputElement.addEventListener('blur', function() {
               var newAdminStatus = parseInt(inputElement.value);
-  
               usersRef.child(userId).update({ admin: newAdminStatus })
                 .then(function() {
                   console.log('Admin status updated successfully!');
@@ -73,7 +70,6 @@ function getUsersFromDatabase() {
                 .catch(function(error) {
                   console.log('Error updating admin status:', error);
                 });
-  
               event.target.innerHTML = newAdminStatus;
             });
           });
@@ -81,6 +77,5 @@ function getUsersFromDatabase() {
       }
     });
   }
-  
   getUsersFromDatabase();
   
