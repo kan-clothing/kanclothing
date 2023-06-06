@@ -1,45 +1,37 @@
 
-function getAllUsers() {
+function getUsersFromDatabase() {
     var usersRef = database.ref('users');
-    usersRef.on('value', function (snapshot) {
+    
+    usersRef.once('value', function(snapshot) {
       var users = snapshot.val();
-      populateUserTable(users);
+      
+      if (users) {
+        var tableBody = document.querySelector('.table-body');
+        
+
+        tableBody.innerHTML = '';
+
+        Object.keys(users).forEach(function(userId) {
+          var user = users[userId];
+          
+          if (user.admin === undefined) {
+            user.admin = 0;
+          }
+          
+
+          var row = document.createElement('tr');
+          
+          row.innerHTML = '<td class="fname">' + user.firstname + '</td>' +
+                          '<td class="lname">' + user.lastname + '</td>' +
+                          '<td class="email">' + user.email + '</td>' +
+                          '<td class="login-status">' + user.loginStatus + '</td>' +
+                          '<td class="admin-status">' + user.admin + '</td>';
+
+          tableBody.appendChild(row);
+        });
+      }
     });
   }
- 
-  function populateUserTable(users) {
-    var tableBody = document.querySelector('.table-body');
-    tableBody.innerHTML = '';
   
-    for (var userId in users) {
-      var user = users[userId];
-      var firstName = user.firstname;
-      var lastName = user.lastname;
-      var email = user.email;
-      var loginStatus = user.loginStatus;
-  
-      var row = document.createElement('tr');
-      var firstNameCell = document.createElement('td');
-      var lastNameCell = document.createElement('td');
-      var emailCell = document.createElement('td');
-      var loginStatusCell = document.createElement('td');
-  
-      firstNameCell.textContent = firstName;
-      lastNameCell.textContent = lastName;
-      emailCell.textContent = email;
-      loginStatusCell.textContent = loginStatus;
-  
-      row.appendChild(firstNameCell);
-      row.appendChild(lastNameCell);
-      row.appendChild(emailCell);
-      row.appendChild(loginStatusCell);
-  
-      tableBody.appendChild(row);
-    }
-  }
-  
-
-  window.addEventListener('load', function () {
-    getAllUsers();
-  });
+  getUsersFromDatabase();
   
