@@ -1,5 +1,15 @@
-firebase.auth().onAuthStateChanged(function(user) {
+auth.onAuthStateChanged(function (user) {
   if (user) {
-    window.location.href = "index.html";
+    var userId = user.uid;
+    var userRef = database.ref('users/' + userId);
+    userRef.on('value', function (snapshot) {
+      var userData = snapshot.val();
+      var loginStatus = userData.loginStatus;
+      if (loginStatus === 0) {
+      } else if (loginStatus === 1) {
+        window.location.href = 'index.html';
+      }
+    });
+  } else {
   }
 });

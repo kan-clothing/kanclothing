@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Collections</title>
-    <link rel="icon" type="image/x-icon" href="/img/icon/collection.png">
+    <link rel="icon" type="image/x-icon" href="/img/icon/icon_logo.png">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
@@ -45,7 +45,8 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p id="username" style = "font-weight:bold; font-size: 15px"></p>
+            <p class ="username"></p>
+            <a class = "admin-button" href = "admin.html">ADMIN PAGE</a>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -57,7 +58,8 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
-                                <p id ="username"></p>
+                                <p class ="username"></p>
+                                <a class = "admin-button" href = "admin.html">ADMIN PAGE</a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
@@ -129,7 +131,7 @@
                         <div class="blog__item__text">
                             <span><img src="img/icon/cale   ndar.png" alt=""> 16 February 2020</span>
                             <h5>By @ArchieWindowBlinds</h5>
-                            <a href="blog-details.html">Read More</a>
+                            
                         </div>
                     </div>
                 </div>
@@ -139,7 +141,7 @@
                         <div class="blog__item__text">
                             <span><img src="img/icon/calendar.png" alt=""> 21 February 2020</span>
                             <h5>By @DarbySolano of Karton Boys</h5>
-                            <a href="#">Read More</a>
+                  
                         </div>
                     </div>
                 </div>
@@ -149,7 +151,7 @@
                         <div class="blog__item__text">
                             <span><img src="img/icon/calendar.png" alt=""> 28 February 2020</span>
                             <h5>By @KickerMori</h5>
-                            <a href="#">Read More</a>
+                      
                         </div>
                     </div>
                 </div>
@@ -159,7 +161,7 @@
                         <div class="blog__item__text">
                             <span><img src="img/icon/calendar.png" alt=""> 16 February 2020</span>
                             <h5>By @NicaB.Benaid & @SirAldrinDamasco.</h5>
-                            <a href="#">Read More</a>
+                   
                         </div>
                     </div>
                 </div>
@@ -169,7 +171,7 @@
                         <div class="blog__item__text">
                             <span><img src="img/icon/calendar.png" alt=""> 21 February 2020</span>
                             <h5>@Zyre</h5>
-                            <a href="#">Read More</a>
+                    
                         </div>
                     </div>
                 </div>
@@ -179,7 +181,7 @@
                         <div class="blog__item__text">
                             <span><img src="img/icon/calendar.png" alt=""> 28 February 2020</span>
                             <h5>By @Ms. Sheila</h5>
-                            <a href="#">Read More</a>
+                   
                         </div>
                     </div>
                 </div>
@@ -189,7 +191,7 @@
                         <div class="blog__item__text">
                             <span><img src="img/icon/calendar.png" alt=""> 16 February 2020</span>
                             <h5>By @shemaygiles</h5>
-                            <a href="#">Read More</a>
+                          
                         </div>
                     </div>
                 </div>
@@ -199,7 +201,7 @@
                         <div class="blog__item__text">
                             <span><img src="img/icon/calendar.png" alt=""> 21 February 2020</span>
                             <h5>By @Phoebe</h5>
-                            <a href="#">Read More</a>
+                     
                         </div>
                     </div>
                 </div>
@@ -207,9 +209,9 @@
                     <div class="blog__item">
                         <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-9.jpg"></div>
                         <div class="blog__item__text">
-                            <span><img src="img/icon/calendar.png" alt=""> 28 February 2020</span>
+                            <span><img src="img/icon/calendar.png" alt="">28 February 2020</span>
                             <h5>By @JayJayRapio</h5>
-                            <a href="#">Read More</a>
+                
                         </div>
                     </div>
                 </div>
@@ -217,6 +219,8 @@
         </div>
     </section>
     <!-- Blog Section End -->
+
+   
     <!-- Counter Section Begin -->
     <section class="counter spad">
         <div class="container">
@@ -255,8 +259,40 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </section>
+     <!-- Comment Section-->
+     <br>
+     <br>
+     <br>
+     <br>
+     
+
+     <section class="blog-details spad">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="blog__details__comment">
+                    <h4>Leave A Comment</h4>
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4">
+                                <input type="text" placeholder="Name">
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <input type="text" placeholder="Email">
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <input type="text" placeholder="Phone">
+                            </div>
+                            <div class="col-lg-12 text-center">
+                                <textarea placeholder="Comment"></textarea>
+                                <button type="submit" class="site-btn">Post Comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
     <!-- Counter Section End -->
 
     <!-- Footer Section Begin -->

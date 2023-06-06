@@ -45,20 +45,19 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p class="username" style = "font-weight:bold; font-size: 15px"></p>
-            <a class = "admin-button" href = "admin.html">ADMIN PAGE</a>
+            <p id="username" style = "font-weight:bold; font-size: 15px"></p>
         </div>
     </div>
- 
+    <!-- Offcanvas Menu End -->
 
+    <!-- Header Section Begin -->
     <header class="header">
         <div class="header__top">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
-                            <p class="username"></p>
-                            <a class = "admin-button" href = "admin.html">ADMIN PAGE</a>
+                            <p id="username"></p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
@@ -143,14 +142,90 @@
                                 </tr >
                             </thead>
                             <tbody>
-                                <table>
-                                    <thead>
-                                        <!-- Table header content here -->
-                                    </thead>
-                                    <tbody id="shoppingcart_add_item">
-                                        <!-- Dynamically added item rows will be inserted here -->
-                                    </tbody>
-                                </table>
+                                <tr style="border-color: black;" >
+                                    <td class="product__cart__item">
+                                        <div  class="product__cart__item__pic">
+                                            <img src="img/shop-details/dyob2-prev1.jpg" style="width: 90px; height: auto;" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6>Kan Dyob 1st Release - Black</h6>
+                                            <h5>₱549</h5>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty-2">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">₱549</td>
+                                    <td class="cart__close"><i class="fa fa-close"></i></td>
+                                </tr>
+                                <tr style="border-color: black;" >
+                                    <tr >
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="img/shop-details/deso-prev1.jpg" style="width: 90px; height: auto;" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6>Kan Desolated - Black</h6>
+                                            <h5>₱549</h5>
+                                        </div>
+                                    </td >
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty-2">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">₱549</td>
+                                    <td class="cart__close"><i class="fa fa-close"></i></td>
+                                </tr>
+                                <tr style="border-color: black;" >
+                                    <tr>
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="img/shop-details/logo2-prev1.jpg" style="width: 90px; height: auto;" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6>Kan Monogram Logo - White</h6>
+                                            <h5>₱549</h5>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty-2">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart__price">₱549</td>
+                                    <td class="cart__close"><i class="fa fa-close"></i></td>
+                                </tr>
+                                <tr style="border-color: black;" >
+                                    <tr >
+                                    <td class="product__cart__item">
+                                        <div class="product__cart__item__pic">
+                                            <img src="img/shop-details/deso2-prev2.jpg" style="width: 90px; height: auto;" alt="">
+                                        </div>
+                                        <div class="product__cart__item__text">
+                                            <h6>Kan Sin Island - White</h6>
+                                            <h5>₱549</h5>
+                                        </div>
+                                    </td>
+                                    <td class="quantity__item">
+                                        <div class="quantity">
+                                            <div class="pro-qty-2">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                     <td class="cart__price">₱549</td>
+                                    <td class="cart__close"><i class="fa fa-close"></i></td>
+                                <tr style="border-color: black;" >
+                                </tr >
                             </tbody>
                         </table>
                     </div>
@@ -258,39 +333,7 @@
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src = "js/login.js"></script>
     <script src = "js/loggedout.js"></script>
-    <script src="js/shoppingcart_add_item.js"></script>
-    
 
-
-
-
-
-
-    <!--BRUTE FORCING FOR 90% ideally sql ito-->
-
-    <script>
-        var selected_itemName = 'Kan Desolated - Black';
-        var selected_itemPrice = '549';
-        var selected_itemImage = 'img/shop-details/deso-prev1.jpg';
-      
-        addItemToCart(selected_itemName, selected_itemPrice, selected_itemImage);
-      </script>
-
-    <script>
-        var selected_itemName2 = 'Kan Dyob 1st Release - White';
-        var selected_itemPrice2 = '549';
-        var selected_itemImage2 = 'img/shop-details/dyob1-prev1.jpg';
-
-        addItemToCart(selected_itemName2, selected_itemPrice2, selected_itemImage2);
-    </script>
-
-    <script>
-        var selected_itemName3 = 'Kan Monogram Logo - White';
-        var selected_itemPrice3 = '549';
-        var selected_itemImage3 = 'img/shop-details/logo2-prev1.jpg';
-
-        addItemToCart(selected_itemName3, selected_itemPrice3, selected_itemImage3);
-    </script>
 
 
 
