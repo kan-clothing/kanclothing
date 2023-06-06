@@ -271,28 +271,26 @@
 
      <section class="blog-details spad">
         <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="blog__details__comment">
-                    <h4>Leave A Comment</h4>
-                    <form action="#">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4">
-                                <input type="text" placeholder="Name">
-                            </div>
-                            <div class="col-lg-4 col-md-4">
-                                <input type="text" placeholder="Email">
-                            </div>
-                            <div class="col-lg-4 col-md-4">
-                                <input type="text" placeholder="Phone">
-                            </div>
-                            <div class="col-lg-12 text-center">
-                                <textarea placeholder="Comment"></textarea>
-                                <button type="submit" class="site-btn">Post Comment</button>
-                            </div>
-                        </div>
-                    </form>
+          <div class="row d-flex justify-content-center">
+            <div class="blog__details__comment">
+              <h4>Leave A Comment</h4>
+              <form id="comment-form">
+                <div class="col-lg-12 text-center">
+                  <textarea id="comment-input" placeholder="Comment"></textarea>
+                  <button type="button" onclick = "submitcomment()" class="site-btn">Post Comment</button>
                 </div>
-            </section>
+              </form>
+            </div>
+          </div>
+      
+          <div id="comments-container" class="row d-flex justify-content-center">
+            <div class="comment-box">
+              <h4>Comments</h4>
+              <div id="comments"></div>
+            </div>
+          </div>
+        </div>
+      </section>
     <!-- Counter Section End -->
 
     <!-- Footer Section Begin -->
@@ -360,6 +358,7 @@
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src="js/login.js"></script>
+    <script src = "js/comments.js"></script>
     
 </body>
 
