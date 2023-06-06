@@ -266,30 +266,53 @@
 
 
 
-    <!--BRUTE FORCING FOR 90% ideally sql ito-->
+    <!-- -->
 
     <script>
-        var selected_itemName = 'Kan Desolated - Black';
-        var selected_itemPrice = '549';
-        var selected_itemImage = 'img/shop-details/deso-prev1.jpg';
-      
-        addItemToCart(selected_itemName, selected_itemPrice, selected_itemImage);
-      </script>
+// The reference to the Firebase Realtime Database
+const databaseURL = 'https://kan-clothing-default-rtdb.asia-southeast1.firebasedatabase.app/';
+const productsRef = firebase.database().ref('products/shirts');
 
-    <script>
-        var selected_itemName2 = 'Kan Dyob 1st Release - White';
-        var selected_itemPrice2 = '549';
-        var selected_itemImage2 = 'img/shop-details/dyob1-prev1.jpg';
-
-        addItemToCart(selected_itemName2, selected_itemPrice2, selected_itemImage2);
-    </script>
-
-    <script>
-        var selected_itemName3 = 'Kan Monogram Logo - White';
-        var selected_itemPrice3 = '549';
-        var selected_itemImage3 = 'img/shop-details/logo2-prev1.jpg';
-
-        addItemToCart(selected_itemName3, selected_itemPrice3, selected_itemImage3);
+// Fetch the product data
+productsRef.once('value', (snapshot) => {
+  const productData = snapshot.val();
+  
+  // Loop through each product
+  for (let productId in productData) {
+    const product = productData[productId];
+    
+    // Create a new table row for each product
+    const tableRow = document.createElement('tr');
+    tableRow.style.borderColor = 'black';
+    
+    // Getting Product image
+    const imageCell = document.createElement('td');
+    const image = document.createElement('img');
+    image.src = product.img;
+    image.style.width = '90px';
+    image.style.height = 'auto';
+    imageCell.appendChild(image);
+    tableRow.appendChild(imageCell);
+    
+    // Getting Product name
+    const nameCell = document.createElement('td');
+    const productName = document.createElement('h6');
+    productName.textContent = product.name;
+    nameCell.appendChild(productName);
+    tableRow.appendChild(nameCell);
+    
+    // Getting Product price
+    const priceCell = document.createElement('td');
+    const productPrice = document.createElement('h5');
+    productPrice.textContent = product.price;
+    priceCell.appendChild(productPrice);
+    tableRow.appendChild(priceCell);
+    
+    // AppendING the table row to the existing table
+    const table = document.getElementById('productsTable');
+    table.appendChild(tableRow);
+  }
+});
     </script>
 
 
