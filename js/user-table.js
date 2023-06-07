@@ -76,4 +76,62 @@ function getUsersFromDatabase() {
     }
   });
 }
+
+var sortOrder = {
+  firstName: 1,
+  admin: 1
+};
+
+function namesort() {
+  var tableBody = document.querySelector('.table-body');
+  var rows = Array.from(tableBody.querySelectorAll('tr'));
+
+  rows.sort(function(row1, row2) {
+    var name1 = row1.querySelector('.fname').textContent.toLowerCase();
+    var name2 = row2.querySelector('.fname').textContent.toLowerCase();
+
+    if (name1 < name2) {
+      return -1 * sortOrder.firstName;
+    } else if (name1 > name2) {
+      return 1 * sortOrder.firstName;
+    } else {
+      return 0;
+    }
+  });
+
+  tableBody.innerHTML = '';
+
+  rows.forEach(function(row) {
+    tableBody.appendChild(row);
+  });
+
+  sortOrder.firstName *= -1;
+}
+
+function adminsort() {
+  var tableBody = document.querySelector('.table-body');
+  var rows = Array.from(tableBody.querySelectorAll('tr'));
+
+  rows.sort(function(row1, row2) {
+    var admin1 = parseInt(row1.querySelector('.admin-status').textContent);
+    var admin2 = parseInt(row2.querySelector('.admin-status').textContent);
+
+    if (admin1 < admin2) {
+      return -1 * sortOrder.admin;
+    } else if (admin1 > admin2) {
+      return 1 * sortOrder.admin;
+    } else {
+      return 0;
+    }
+  });
+
+  tableBody.innerHTML = '';
+
+  rows.forEach(function(row) {
+    tableBody.appendChild(row);
+  });
+
+  sortOrder.admin *= -1;
+}
+
 getUsersFromDatabase();
