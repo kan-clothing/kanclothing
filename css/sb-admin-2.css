@@ -6493,6 +6493,9 @@ button.bg-dark:focus {
 .bg-white {
   background-color: #fff !important;
 }
+.bg-black {
+  background-color: #000 !important;
+}
 
 .bg-transparent {
   background-color: transparent !important;
@@ -10169,6 +10172,7 @@ a:focus {
 
 .topbar {
   height: 4.375rem;
+
 }
 
 .topbar #sidebarToggleTop {
