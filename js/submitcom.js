@@ -134,6 +134,11 @@ function getCurrentDateTime() {
     commentRef.on('child_added', function(snapshot) {
       var comment = snapshot.val();
       displayComment(comment);
+  
+      var commentsSection = document.getElementById('comments-section');
+      if (commentsSection.childElementCount > 3) {
+        commentsSection.classList.add('scrollable-comments');
+      }
     });
   }
   
