@@ -26,6 +26,10 @@
 </head>
 
 <body>
+
+    
+
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -129,59 +133,60 @@
 <!-- Shopping Cart Section Begin -->
 <section style="background-color:lightgrey;" class="shopping-cart spad">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="shopping__cart__table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Product</th>
-                  <th>Quantity</th>
-                  <th>Total</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="shopping-cart-items">
-                <!-- Dynamically added item rows will be inserted here -->
-              </tbody>
-            </table>
-          </div>
-          <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="continue__btn">
-                <a style="border-color: black;" href="#">Continue Shopping</a>
-              </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="shopping__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="shopping-cart-items">
+                            <!-- Dynamically added item rows will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="continue__btn">
+                            <a style="border-color: black;" href="#">Continue Shopping</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="continue__btn update__btn">
+                            <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="continue__btn update__btn">
-                <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
-              </div>
+            <div class="col-lg-4">
+                <div class="cart__discount">
+                    <h6>Discount codes</h6>
+                    <form action="#">
+                        <input type="text" placeholder="Coupon code">
+                        <button type="submit">Apply</button>
+                    </form>
+                </div>
+                <div class="cart__total">
+                    <h6>Cart total</h6>
+                    <ul>
+                        <li>Subtotal <span>₱2,196</span></li>
+                        <li>Total <span>₱2,196</span></li>
+                    </ul>
+                    <a href="./checkout.html" class="primary-btn">Proceed to checkout</a>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="col-lg-4">
-          <div class="cart__discount">
-            <h6>Discount codes</h6>
-            <form action="#">
-              <input type="text" placeholder="Coupon code">
-              <button type="submit">Apply</button>
-            </form>
-          </div>
-          <div class="cart__total">
-            <h6>Cart total</h6>
-            <ul>
-              <li>Subtotal <span>₱2,196</span></li>
-              <li>Total <span>₱2,196</span></li>
-            </ul>
-            <a href="./checkout.html" class="primary-btn">Proceed to checkout</a>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
-  <!-- Shopping Cart Section End -->
+</section>
+<!-- Shopping Cart Section End -->
+
+
   
-  <script src="shoppingcart_add_item.js"></script>
   
 
     <!-- Footer Section Begin -->
@@ -238,6 +243,9 @@
     <!-- Search End -->
 
     <!-- Js Plugins -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
@@ -248,67 +256,33 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>    
     <script src = "js/login.js"></script>
     <script src = "js/loggedout.js"></script>
-    <script src="js/shoppingcart_add_item.js"></script>
-    
-
-
-
-
-
-
-    <!-- -->
-
+    <script src="js/shoppingcartAddItem.js"></script>
+ 
     <script>
-// The reference to the Firebase Realtime Database
-const databaseURL = 'https://kan-clothing-default-rtdb.asia-southeast1.firebasedatabase.app/';
-const productsRef = firebase.database().ref('products/shirts');
-
-// Fetch the product data
-productsRef.once('value', (snapshot) => {
-  const productData = snapshot.val();
-  
-  // Loop through each product
-  for (let productId in productData) {
-    const product = productData[productId];
+        // Check if Firebase has already been initialized
+    if (!firebase.apps.length) {
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_AUTH_DOMAIN",
+        databaseURL: "YOUR_DATABASE_URL",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_STORAGE_BUCKET",
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        appId: "YOUR_APP_ID"
+      };
     
-    // Create a new table row for each product
-    const tableRow = document.createElement('tr');
-    tableRow.style.borderColor = 'black';
-    
-    // Getting Product image
-    const imageCell = document.createElement('td');
-    const image = document.createElement('img');
-    image.src = product.img;
-    image.style.width = '90px';
-    image.style.height = 'auto';
-    imageCell.appendChild(image);
-    tableRow.appendChild(imageCell);
-    
-    // Getting Product name
-    const nameCell = document.createElement('td');
-    const productName = document.createElement('h6');
-    productName.textContent = product.name;
-    nameCell.appendChild(productName);
-    tableRow.appendChild(nameCell);
-    
-    // Getting Product price
-    const priceCell = document.createElement('td');
-    const productPrice = document.createElement('h5');
-    productPrice.textContent = product.price;
-    priceCell.appendChild(productPrice);
-    tableRow.appendChild(priceCell);
-    
-    // AppendING the table row to the existing table
-    const table = document.getElementById('shopping-cart-items');
-    table.appendChild(tableRow);
-  }
-});
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    }
     </script>
+
+
+
+
+    
 
 
 
