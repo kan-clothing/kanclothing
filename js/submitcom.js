@@ -59,7 +59,6 @@ function displayComment(comment) {
 }
 
 function getLoggedInUserName() {
-  // Access the loggedInUserName variable from the login.js file
   if (typeof loggedInUserName !== 'undefined') {
     return loggedInUserName;
   } else {
@@ -67,10 +66,28 @@ function getLoggedInUserName() {
   }
 }
 
+function getLoggedInUserFullName() {
+  var user = firebase.auth().currentUser;
+  if (user) {
+    var userId = user.uid;
+    var userRef = firebase.database().ref('users/' + userId);
+    userRef.once('value', function(snapshot) {
+      var userData = snapshot.val();
+      var firstName = userData.firstname || "";
+      var lastName = userData.lastname || "";
+      var fullName = firstName + " " + lastName;
+      loggedInUserName = fullName; // Update the loggedInUserName variable
+    });
+  }
+  return getLoggedInUserName(); // Return the updated full name
+}
+
+
 function displayComments() {
   var database = firebase.database();
   var commentRef = database.ref('comment_section');
 
+  var commentRef = database.ref('comment_section');
   commentRef.on('child_added', function(snapshot) {
     var comment = snapshot.val();
     displayComment(comment);
