@@ -60,6 +60,9 @@ function updateLoggedInStatus(status) {
   }
 }
 
+var GlobalEmail; // Global variable to store user email
+var GlobalUID;
+
 auth.onAuthStateChanged(function (user) {
   if (user && user.emailVerified) {
     updateLoggedInStatus(true);
@@ -72,6 +75,10 @@ auth.onAuthStateChanged(function (user) {
       updateUsername(firstName);
 
       console.log('User logged in:', user.email);
+      GlobalEmail = user.email; // Assign the value to the global variable
+      GlobalUID = userId; // Assign the value to the global variable
+      createUserCart();
+
       if (userData.admin === 1) {
         showAdminButton();
       } else {
@@ -107,6 +114,7 @@ function hideAdminButton() {
 function login() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
+  windowed.GlobalEmail = email;
 
   if (!validate_field(email) || !validate_email(email)) {
     alert('Please enter a valid email address.');

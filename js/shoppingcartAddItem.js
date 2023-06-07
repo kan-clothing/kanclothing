@@ -1,114 +1,106 @@
-function loadProducts() {
-  // Check if Firebase has already been initialized
-  if (!firebase.apps.length) {
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      databaseURL: "YOUR_DATABASE_URL",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
+// Check if Firebase has already been initialized
+if (!firebase.apps.length) {
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAMo5G5bWkDHzyXkLQjcB6F5C8GQGmeiNc",
+    authDomain: "kan-clothing.firebaseapp.com",
+    databaseURL: "https://kan-clothing-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "kan-clothing",
+    storageBucket: "kan-clothing.appspot.com",
+    messagingSenderId: "943100252975",
+    appId: "1:943100252975:web:0268951ffea192d27e47da"
+  };
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  }
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+}
 
-  // Get a reference to the products node in the Firebase Realtime Database
-  const productsRef = firebase.database().ref("products/shirts");
+// Create an array to store the selected product IDs
+var selectedProducts = [];
+
+// Function to retrieve product data from Firebase and add it to the cart
+function displayProductInCart(product) {
+  // Get a reference to the shopping cart table body
+  const shoppingCartItems = document.getElementById('shopping-cart-items');
+
+  // Create a new table row for the product
+  const tableRow = document.createElement('tr');
+  tableRow.style.borderColor = 'black';
+
+  // Create product image column
+  const imageColumn = document.createElement('td');
+  const image = document.createElement('img');
+  image.src = product.img;
+  image.style.width = '90px';
+  image.style.height = 'auto';
+  imageColumn.appendChild(image);
+  tableRow.appendChild(imageColumn);
+
+  // Create product name column
+  const nameColumn = document.createElement('td');
+  const productName = document.createElement('h6');
+  productName.textContent = product.name;
+  nameColumn.appendChild(productName);
+  tableRow.appendChild(nameColumn);
+
+  // Create product price column
+  const priceColumn = document.createElement('td');
+  const productPrice = document.createElement('h5');
+  productPrice.textContent = '₱ ' + product.price;
+  priceColumn.appendChild(productPrice);
+  tableRow.appendChild(priceColumn);
+
+  // Create remove product column
+  const removeColumn = document.createElement('td');
+  const removeButton = document.createElement('button');
+  removeButton.textContent = 'Remove';
+  removeButton.addEventListener('click', function() {
+    removeProductFromCart(product.id);
+  });
+  removeColumn.appendChild(removeButton);
+  tableRow.appendChild(removeColumn);
+
+  // Append the table row to the shopping cart
+  shoppingCartItems.appendChild(tableRow);
+}
+
+// Function to add an item to the shopping cart
+function addItemToCart(productID) {
+  // Get a reference to the specific product in the Firebase Realtime Database
+  const productsRef = firebase.database().ref("products/shirts/" + productID);
 
   // Function to retrieve product data from Firebase and add it to the cart
   productsRef.on('value', function(snapshot) {
-    const products = snapshot.val();
-    const table = document.getElementById('shopping-cart-items');
+    const product = snapshot.val();
 
-    if (table) {
-      table.innerHTML = '';
+    // Check if the product is not null and not already in the shopping cart
+    if (product && !selectedProducts.includes(productID)) {
+      // Add the product ID to the selectedProducts array
+      selectedProducts.push(productID);
 
-      for (const productId in products) {
-        const product = products[productId];
-
-        // Create a new table row for each product
-        const tableRow = document.createElement('tr');
-        tableRow.style.borderColor = 'black';
-
-        // Create product image
-        const imageColumn = document.createElement('td');
-        const image = document.createElement('img');
-        image.src = product.img;
-        image.style.width = '90px';
-        image.style.height = 'auto';
-        imageColumn.appendChild(image);
-        tableRow.appendChild(imageColumn);
-
-        // Create product name
-        const nameColumn = document.createElement('td');
-        const productName = document.createElement('h6');
-        productName.textContent = product.name;
-        nameColumn.appendChild(productName);
-        tableRow.appendChild(nameColumn);
-
-        // Create product price
-        const priceColumn = document.createElement('td');
-        const productPrice = document.createElement('h5');
-        productPrice.textContent = '₱ ' + product.price;
-        priceColumn.appendChild(productPrice);
-        tableRow.appendChild(priceColumn);
-
-        // Append the table row to the existing table
-        table.appendChild(tableRow);
-      }
+      // Display the product in the cart
+      displayProductInCart(product);
     }
   });
 }
 
-// Call the loadProducts function to populate the shopping cart with data from Firebase
-loadProducts();
+// Function to remove a product from the shopping cart
+function removeProductFromCart(productID) {
+  // Get the index of the product in the selectedProducts array
+  const index = selectedProducts.indexOf(productID);
 
-// Function to add an item to the shopping cart
-function addItemToCart(productID) {
-  // Get a reference to the products node in the Firebase Realtime Database
-  const productsRef = firebase.database().ref("products/shirts");
+  // Check if the product is in the selectedProducts array
+  if (index !== -1) {
+    // Remove the product from the selectedProducts array
+    selectedProducts.splice(index, 1);
 
-  // Update the reference to the correct node in your database
-  const databaseRef = productsRef.child(productID);
+    // Get the table row of the product
+    const tableRow = document.getElementById(productID);
 
-  databaseRef.on('value', function(snapshot) {
-    const product = snapshot.val();
-    const table = document.getElementById('shopping-cart-items');
-
-    if (table) {
-      // Create a new row
-      const newRow = document.createElement('tr');
-      newRow.style.borderColor = 'black';
-
-      // Create product image
-      const imageColumn = document.createElement('td');
-      const image = document.createElement('img');
-      image.src = product.img;
-      image.style.width = '90px';
-      image.style.height = 'auto';
-      imageColumn.appendChild(image);
-      newRow.appendChild(imageColumn);
-
-      // Create product name
-      const nameColumn = document.createElement('td');
-      const productName = document.createElement('h6');
-      productName.textContent = product.name;
-      nameColumn.appendChild(productName);
-      newRow.appendChild(nameColumn);
-
-      // Create product price
-      const priceColumn = document.createElement('td');
-      const productPrice = document.createElement('h5');
-      productPrice.textContent = '₱ ' + product.price;
-      priceColumn.appendChild(productPrice);
-      newRow.appendChild(priceColumn);
-
-      // Append the new row to the shopping cart table body
-      table.appendChild(newRow);
+    // Check if the table row exists
+    if (tableRow) {
+      // Remove the table row from the shopping cart
+      tableRow.remove();
     }
-  });
+  }
 }

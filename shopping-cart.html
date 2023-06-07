@@ -12,7 +12,7 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
-    rel="stylesheet">
+        rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -27,9 +27,6 @@
 
 <body>
 
-    
-
-
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -40,20 +37,18 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
             <div class="offcanvas__links">
-                <a id="logout-resp" type  = "button" onclick = "logout()" style="cursor: pointer;">Log Out</a>
-                <a id="login-resp" href  = "login.html">Sign In</a>
-                <a id="or-resp" style = "font-style: italic;">or</a>
-                <a id="register-resp" href  = "register.html">Sign Up</a>
+                <a id="logout-resp" type="button" onclick="logout()" style="cursor: pointer;">Log Out</a>
+                <a id="login-resp" href="login.html">Sign In</a>
+                <a id="or-resp" style="font-style: italic;">or</a>
+                <a id="register-resp" href="register.html">Sign Up</a>
             </div>
-           
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p class="username" style = "font-weight:bold; font-size: 15px"></p>
-            <a class = "admin-button" href = "admin.html">ADMIN PAGE</a>
+            <p class="username" style="font-weight:bold; font-size: 15px"></p>
+            <a class="admin-button" href="admin.html">ADMIN PAGE</a>
         </div>
     </div>
- 
 
     <header class="header">
         <div class="header__top">
@@ -62,7 +57,7 @@
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
                             <p class="username"></p>
-                            <a class = "admin-button" href = "admin.html">ADMIN PAGE</a>
+                            <a class="admin-button" href="admin.html">ADMIN PAGE</a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
@@ -70,7 +65,7 @@
                             <div class="header__top__links">
                                 <a id="loginLink" href="./login.html">Login</a>
                                 <a id="signUpLink" href="./register.html">Sign up</a>
-                                <a id="logoutLink" type = "button" onclick = "logout()" style="cursor: pointer;">Logout</a>
+                                <a id="logoutLink" type="button" onclick="logout()" style="cursor: pointer;">Logout</a>
                             </div>
                         </div>
                     </div>
@@ -97,41 +92,21 @@
                             <li><a href="#">About</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.html">About Us</a></li>
-                                    <li><a href="./blog.html">Collections</a> </li>
-                               </ul>
+                                    <li><a href="./blog.html">Collections</a></li>
+                                </ul>
                             </li>
                             <li><a href="./contact.html">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
-              
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
     </header>
     <!-- Header Section End -->
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div  class="col-lg-12">
-                    <div class="breadcrumb__text">
-                        <h4 >Shopping Cart</h4>
-                        <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
-                            <a href="./shop.html">Shop</a>
-                            <span>Shopping Cart</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-
 <!-- Shopping Cart Section Begin -->
-<section style="background-color:lightgrey;" class="shopping-cart spad">
+<section style="background-color: lightgrey;" class="shopping-cart spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
@@ -145,7 +120,7 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody id="shopping-cart-items">
+                        <tbody id='shopping-cart-items'>
                             <!-- Dynamically added item rows will be inserted here -->
                         </tbody>
                     </table>
@@ -186,9 +161,6 @@
 <!-- Shopping Cart Section End -->
 
 
-  
-  
-
     <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container">
@@ -199,7 +171,7 @@
                             <a href="#"><img src="img/logo.png" alt=""></a>
                         </div>
                         <p>Shirt that suits your fashion</p>
-                        
+
                     </div>
                 </div>
                 <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
@@ -219,12 +191,12 @@
                     </div>
                 </div>
                 <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
-                    
+
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    
+
                 </div>
             </div>
         </div>
@@ -256,37 +228,8 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-    <script src = "js/login.js"></script>
-    <script src = "js/loggedout.js"></script>
+    <script src="js/login.js"></script>
     <script src="js/shoppingcartAddItem.js"></script>
- 
-    <script>
-        // Check if Firebase has already been initialized
-    if (!firebase.apps.length) {
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_AUTH_DOMAIN",
-        databaseURL: "YOUR_DATABASE_URL",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_STORAGE_BUCKET",
-        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-        appId: "YOUR_APP_ID"
-      };
-    
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-    }
-    </script>
-
-
-
-
-    
-
-
-
-        
 
 </body>
 
