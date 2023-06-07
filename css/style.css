@@ -2993,6 +2993,17 @@ ol {
   #comments-container {
 	margin-top: 20px;
   }
+  .comment-delete {
+	background-color: #ff0000;
+	color: #fff;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+  }
+  
+  .comment-delete:hover {
+	background-color: #cc0000;
+  }
 /*---------------------
   Blog Details
 -----------------------*/
