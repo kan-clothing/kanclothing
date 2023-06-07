@@ -19,10 +19,10 @@ function getUsersFromDatabase() {
         var row = document.createElement('tr');
 
         row.innerHTML = '<td class="fname" contenteditable="true" data-userid="' + userId + '">' + user.firstname + '</td>' +
-                        '<td class="lname" contenteditable="true" data-userid="' + userId + '">' + user.lastname + '</td>' +
-                        '<td class="email">' + user.email + '</td>' +
-                        '<td class="login-status">' + user.loginStatus + '</td>' +
-                        '<td class="admin-status" contenteditable="true" data-userid="' + userId + '">' + user.admin + '</td>';
+          '<td class="lname" contenteditable="true" data-userid="' + userId + '">' + user.lastname + '</td>' +
+          '<td class="email">' + user.email + '</td>' +
+          '<td class="login-status">' + user.loginStatus + '</td>' +
+          '<td class="admin-status" contenteditable="true" data-userid="' + userId + '">' + user.admin + '</td>';
 
         tableBody.appendChild(row);
       });
@@ -69,69 +69,73 @@ function getUsersFromDatabase() {
         });
       });
 
-      var adminStatusCells = document.querySelectorAll('.admin-status');
-      adminStatusCells.forEach(function(cell) {
-        // Admin status cell code...
+      var sortStatus = {
+        fname: 'asc',
+        lname: 'asc',
+        login: 'asc',
+        admin: 'asc'
+      };
+
+      var nameSortButton = document.querySelector('th[onclick="namesort()"]');
+      var lnameSortButton = document.querySelector('th[onclick="lnamesort()"]');
+      var loginSortButton = document.querySelector('th[onclick="loginsort()"]');
+      var adminSortButton = document.querySelector('th[onclick="adminsort()"]');
+
+      nameSortButton.addEventListener('click', function() {
+        sortTable('fname');
+        sortStatus.fname = sortStatus.fname === 'asc' ? 'desc' : 'asc';
       });
+
+      lnameSortButton.addEventListener('click', function() {
+        sortTable('lname');
+        sortStatus.lname = sortStatus.lname === 'asc' ? 'desc' : 'asc';
+      });
+
+      loginSortButton.addEventListener('click', function() {
+        sortTable('login');
+        sortStatus.login = sortStatus.login === 'asc' ? 'desc' : 'asc';
+      });
+
+      adminSortButton.addEventListener('click', function() {
+        sortTable('admin');
+        sortStatus.admin = sortStatus.admin === 'asc' ? 'desc' : 'asc';
+      });
+
+      function sortTable(field) {
+        var rows = Array.from(tableBody.querySelectorAll('tr'));
+
+        rows.sort(function(a, b) {
+          var aValue = getValue(a, field);
+          var bValue = getValue(b, field);
+
+          if (field === 'fname' || field === 'lname') {
+            return aValue.localeCompare(bValue);
+          } else {
+            return aValue - bValue;
+          }
+        });
+
+        if (sortStatus[field] === 'desc') {
+          rows.reverse();
+        }
+
+        tableBody.innerHTML = '';
+        rows.forEach(function(row) {
+          tableBody.appendChild(row);
+        });
+      }
+
+      function getValue(row, field) {
+        var cell = row.querySelector('.' + field);
+
+        if (field === 'login-status' || field === 'admin-status') {
+          return parseInt(cell.innerText);
+        } else {
+          return cell.innerText;
+        }
+      }
     }
   });
-}
-
-var sortOrder = {
-  firstName: 1,
-  admin: 1
-};
-
-function namesort() {
-  var tableBody = document.querySelector('.table-body');
-  var rows = Array.from(tableBody.querySelectorAll('tr'));
-
-  rows.sort(function(row1, row2) {
-    var name1 = row1.querySelector('.fname').textContent.toLowerCase();
-    var name2 = row2.querySelector('.fname').textContent.toLowerCase();
-
-    if (name1 < name2) {
-      return -1 * sortOrder.firstName;
-    } else if (name1 > name2) {
-      return 1 * sortOrder.firstName;
-    } else {
-      return 0;
-    }
-  });
-
-  tableBody.innerHTML = '';
-
-  rows.forEach(function(row) {
-    tableBody.appendChild(row);
-  });
-
-  sortOrder.firstName *= -1;
-}
-
-function adminsort() {
-  var tableBody = document.querySelector('.table-body');
-  var rows = Array.from(tableBody.querySelectorAll('tr'));
-
-  rows.sort(function(row1, row2) {
-    var admin1 = parseInt(row1.querySelector('.admin-status').textContent);
-    var admin2 = parseInt(row2.querySelector('.admin-status').textContent);
-
-    if (admin1 < admin2) {
-      return -1 * sortOrder.admin;
-    } else if (admin1 > admin2) {
-      return 1 * sortOrder.admin;
-    } else {
-      return 0;
-    }
-  });
-
-  tableBody.innerHTML = '';
-
-  rows.forEach(function(row) {
-    tableBody.appendChild(row);
-  });
-
-  sortOrder.admin *= -1;
 }
 
 getUsersFromDatabase();
