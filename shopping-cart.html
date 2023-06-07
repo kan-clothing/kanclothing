@@ -12,7 +12,7 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
-    rel="stylesheet">
+        rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -26,6 +26,7 @@
 </head>
 
 <body>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -36,20 +37,18 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
             <div class="offcanvas__links">
-                <a id="logout-resp" type  = "button" onclick = "logout()" style="cursor: pointer;">Log Out</a>
-                <a id="login-resp" href  = "login.html">Sign In</a>
-                <a id="or-resp" style = "font-style: italic;">or</a>
-                <a id="register-resp" href  = "register.html">Sign Up</a>
+                <a id="logout-resp" type="button" onclick="logout()" style="cursor: pointer;">Log Out</a>
+                <a id="login-resp" href="login.html">Sign In</a>
+                <a id="or-resp" style="font-style: italic;">or</a>
+                <a id="register-resp" href="register.html">Sign Up</a>
             </div>
-           
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p class="username" style = "font-weight:bold; font-size: 15px"></p>
-            <a class = "admin-button" href = "admin.html">ADMIN PAGE</a>
+            <p class="username" style="font-weight:bold; font-size: 15px"></p>
+            <a class="admin-button" href="admin.html">ADMIN PAGE</a>
         </div>
     </div>
- 
 
     <header class="header">
         <div class="header__top">
@@ -58,7 +57,7 @@
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
                             <p class="username"></p>
-                            <a class = "admin-button" href = "admin.html">ADMIN PAGE</a>
+                            <a class="admin-button" href="admin.html">ADMIN PAGE</a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
@@ -66,7 +65,7 @@
                             <div class="header__top__links">
                                 <a id="loginLink" href="./login.html">Login</a>
                                 <a id="signUpLink" href="./register.html">Sign up</a>
-                                <a id="logoutLink" type = "button" onclick = "logout()" style="cursor: pointer;">Logout</a>
+                                <a id="logoutLink" type="button" onclick="logout()" style="cursor: pointer;">Logout</a>
                             </div>
                         </div>
                     </div>
@@ -93,96 +92,74 @@
                             <li><a href="#">About</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.html">About Us</a></li>
-                                    <li><a href="./blog.html">Collections</a> </li>
-                               </ul>
+                                    <li><a href="./blog.html">Collections</a></li>
+                                </ul>
                             </li>
                             <li><a href="./contact.html">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
-              
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
     </header>
     <!-- Header Section End -->
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div  class="col-lg-12">
-                    <div class="breadcrumb__text">
-                        <h4 >Shopping Cart</h4>
-                        <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
-                            <a href="./shop.html">Shop</a>
-                            <span>Shopping Cart</span>
+<!-- Shopping Cart Section Begin -->
+<section style="background-color: lightgrey;" class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="shopping__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id='shopping-cart-items'>
+                            <!-- Dynamically added item rows will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="continue__btn">
+                            <a style="border-color: black;" href="#">Continue Shopping</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="continue__btn update__btn">
+                            <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-
-<!-- Shopping Cart Section Begin -->
-<section style="background-color:lightgrey;" class="shopping-cart spad">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="shopping__cart__table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Product</th>
-                  <th>Quantity</th>
-                  <th>Total</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="shopping-cart-items">
-                <!-- Dynamically added item rows will be inserted here -->
-              </tbody>
-            </table>
-          </div>
-          <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="continue__btn">
-                <a style="border-color: black;" href="#">Continue Shopping</a>
-              </div>
+            <div class="col-lg-4">
+                <div class="cart__discount">
+                    <h6>Discount codes</h6>
+                    <form action="#">
+                        <input type="text" placeholder="Coupon code">
+                        <button type="submit">Apply</button>
+                    </form>
+                </div>
+                <div class="cart__total">
+                    <h6>Cart total</h6>
+                    <ul>
+                        <li>Subtotal <span>₱2,196</span></li>
+                        <li>Total <span>₱2,196</span></li>
+                    </ul>
+                    <a href="./checkout.html" class="primary-btn">Proceed to checkout</a>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="continue__btn update__btn">
-                <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="col-lg-4">
-          <div class="cart__discount">
-            <h6>Discount codes</h6>
-            <form action="#">
-              <input type="text" placeholder="Coupon code">
-              <button type="submit">Apply</button>
-            </form>
-          </div>
-          <div class="cart__total">
-            <h6>Cart total</h6>
-            <ul>
-              <li>Subtotal <span>₱2,196</span></li>
-              <li>Total <span>₱2,196</span></li>
-            </ul>
-            <a href="./checkout.html" class="primary-btn">Proceed to checkout</a>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
-  <!-- Shopping Cart Section End -->
-  
-  <script src="shoppingcart_add_item.js"></script>
-  
+</section>
+<!-- Shopping Cart Section End -->
+
 
     <!-- Footer Section Begin -->
     <footer class="footer">
@@ -194,7 +171,7 @@
                             <a href="#"><img src="img/logo.png" alt=""></a>
                         </div>
                         <p>Shirt that suits your fashion</p>
-                        
+
                     </div>
                 </div>
                 <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
@@ -214,12 +191,12 @@
                     </div>
                 </div>
                 <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
-                    
+
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    
+
                 </div>
             </div>
         </div>
@@ -238,6 +215,9 @@
     <!-- Search End -->
 
     <!-- Js Plugins -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
@@ -248,71 +228,8 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>    
-    <script src = "js/login.js"></script>
-    <script src = "js/loggedout.js"></script>
-    <script src="js/shoppingcart_add_item.js"></script>
-    
-
-
-
-
-
-
-    <!-- -->
-
-    <script>
-// The reference to the Firebase Realtime Database
-const databaseURL = 'https://kan-clothing-default-rtdb.asia-southeast1.firebasedatabase.app/';
-const productsRef = firebase.database().ref('products/shirts');
-
-// Fetch the product data
-productsRef.once('value', (snapshot) => {
-  const productData = snapshot.val();
-  
-  // Loop through each product
-  for (let productId in productData) {
-    const product = productData[productId];
-    
-    // Create a new table row for each product
-    const tableRow = document.createElement('tr');
-    tableRow.style.borderColor = 'black';
-    
-    // Getting Product image
-    const imageCell = document.createElement('td');
-    const image = document.createElement('img');
-    image.src = product.img;
-    image.style.width = '90px';
-    image.style.height = 'auto';
-    imageCell.appendChild(image);
-    tableRow.appendChild(imageCell);
-    
-    // Getting Product name
-    const nameCell = document.createElement('td');
-    const productName = document.createElement('h6');
-    productName.textContent = product.name;
-    nameCell.appendChild(productName);
-    tableRow.appendChild(nameCell);
-    
-    // Getting Product price
-    const priceCell = document.createElement('td');
-    const productPrice = document.createElement('h5');
-    productPrice.textContent = product.price;
-    priceCell.appendChild(productPrice);
-    tableRow.appendChild(priceCell);
-    
-    // AppendING the table row to the existing table
-    const table = document.getElementById('shopping-cart-items');
-    table.appendChild(tableRow);
-  }
-});
-    </script>
-
-
-
-        
+    <script src="js/login.js"></script>
+    <script src="js/shoppingcartAddItem.js"></script>
 
 </body>
 

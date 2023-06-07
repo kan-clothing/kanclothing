@@ -204,27 +204,28 @@
 
                         <div class="black-shirt colorful-shirt col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg"  style="border: 1px solid #6f6859;"></div>
-                                <div class="product__item__text">
-                                    <h6>Kan Desolated - Black</h6>
-                                    <a href="kan-desolated-black.php" class="add-cart">View Product</a>
-                                    <button class="add-to-cart-btn" onclick="addItemToCart('Kan Desolated - Black', 549, 'img/product/product-3.jpg')">Add to cart</button>
-                                    <h5>₱549</h5>
-                                </div>
+                              <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg" style="border: 1px solid #6f6859;"></div>
+                              <div class="product__item__text">
+                                <h6>Kan Desolated - Black</h6>
+                                <a href="kan-desolated-black.php" class="add-cart">View Product</a>
+                                <button class="btn1 add-to-cart-btn" id="add-to-cart-btn1" onclick="addProductToCart('product1');">Add to cart</button>
+                                <h5>₱549</h5>
+                              </div>
                             </div>
-                        </div>
+                          </div>
+                          
 
-                        <div class="white-shirt with-person col-lg-4 col-md-6 col-sm-6">
+                          <div class="white-shirt with-person col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item sale">
                                 <div class="product__item__pic set-bg" data-setbg="img/product/product-14.jpg" style="border: 1px solid #6f6859;"></div>
                                 <div class="product__item__text">
                                     <h6>Kan Dyob 1st Release - White</h6>
                                     <a href="kan-dyob-white.php" class="add-cart">View Product</a>
-                                    <button class="add-to-cart-btn" onclick="addItemToCart('Kan Dyob 1st Release - White', 549, 'img/product/product-14.jpg')">Add to cart</button>
-                                    <h5>₱549</h5>
-                                </div>
+                                    <button class="btn2" id="add-to-cart-btn2" onclick="addProductToCart('product2');">Add to cart</button>
+                                <h5>₱549</h5>
+                              </div>
                             </div>
-                        </div>
+                          </div>
 
                         <div class="black-shirt logo-shirt col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
@@ -232,7 +233,7 @@
                                 <div class="product__item__text">
                                     <h6>Kan Monogram Logo - Black</h6>
                                     <a href="kan-logo-black.php" class="add-cart">View Product</a>
-                                    <button class="add-to-cart-btn" onclick="addItemToCart('Kan Monogram Logo - Black', 549, 'img/product/product-4.jpg')">Add to cart</button>
+                                    <button class="btn3" id="add-to-cart-btn3" onclick="addProductToCart('product3');">Add to cart</button>
                                     <h5>₱549</h5>
                                 </div>
                             </div>
@@ -244,7 +245,7 @@
                                 <div class="product__item__text">
                                     <h6>Kan Dyob 1st Release - Black</h6>
                                     <a href="kan-dyob-black.php" class="add-cart">View Product</a>
-                                    <button class="btn4" id="add-to-cart-btn">Add to cart</button>
+                                    <button class="btn4" id="add-to-cart-btn4" onclick="addProductToCart('product4');">Add to cart</button>
                                     <h5>₱549</h5>
                                 </div>
                             </div>
@@ -256,7 +257,7 @@
                                 <div class="product__item__text">
                                     <h6>Kan Nude Logo - Black</h6>
                                     <a href="kan-nude-logo-black.php" class="add-cart">View Product</a>
-                                    <button class="btn5" id="add-to-cart-btn">Add to cart</button>
+                                    <button class="btn5" id="add-to-cart-btn5" onclick="addProductToCart('product5');">Add to cart</button>
                                     <h5>₱549</h5>
                                 </div>
                             </div>
@@ -268,7 +269,7 @@
                                 <div class="product__item__text">
                                     <h6>Kan Monogram Logo - White</h6>
                                     <a href="kan-mono-white.php" class="add-cart">View Product</a>
-                                    <button class="btn6" id="add-to-cart-btn">Add to cart</button>
+                                    <button class="btn6" id="add-to-cart-btn6" onclick="addProductToCart('product6');">Add to cart</button>
                                     <h5>₱549</h5>
                                 </div>
                             </div>
@@ -280,7 +281,7 @@
                                 <div class="product__item__text">
                                     <h6>Kan Monogram - Black</h6>
                                     <a href="kan-mono-black.php" class="add-cart">View Product</a>
-                                    <button class="btn7" id="add-to-cart-btn">Add to cart</button>
+                                    <button class="btn7" id="add-to-cart-btn7" onclick="addProductToCart('product7');">Add to cart</button>
                                     <h5>₱549</h5>
                                 </div>
                             </div>
@@ -300,7 +301,7 @@
                                     <div class="product__item__text">
                                         <h6>Kan Girl Fuck Everyone - Black</h6>
                                         <a href="kan-girl-black.php" id="add-to-cart-btn" class="add-cart">View Product</a>
-                                        <button class="btn8" id="add-to-cart-btn">Add to cart</button> <!--DELETE THESE, ONLY USING THIS CUZ THE HANCLOTH PHP ARE BUNGED-->
+                                        <button class="btn8" id="add-to-cart-btn8" onclick="addProductToCart('product8');">Add to cart</button>
                                         <h5>₱549</h5>                                   
                                     </div>
                                 </div>
@@ -477,8 +478,41 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
     <script src="js/login.js"></script>
-    <script src="js/shoppingcart_add_item.js"></script>
+    <script src="js/shoppingcartAddItem.js"></script>
+    <script src="js/createUserCart.js"></script>
+    <script src="js/fetchProducts.js"></script>
+    <script src="js/addProductToCart.js"></script>
     
+
+
+
+
+    <script>
+        // Fetch products and add one of them to the cart
+        function fetchAndAddProductToCart() {
+          fetchProducts()
+            .then((products) => {
+              if (products.length > 0) {
+                var productToAdd = products[1]; // Select the first product
+                addProductToCart(productToAdd);
+              } else {
+                console.log("No products available");
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching products:", error);
+            });
+        }
+      </script>
+
+
+
+
+
+
+
+
+
     <script>
 
 function updateUsername(username) {
