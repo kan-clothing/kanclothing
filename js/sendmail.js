@@ -21,7 +21,7 @@ btn.addEventListener('click', function(e) {
     }).then(
         function(emailMessage) {
             console.log('Email sent successfully');
-            var dateSent = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' }) + ' at ' + new Date().toLocaleDateString('en-US');
+            var dateSent = new Date().toLocaleDateString('en-US') + ' at ' + new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
             var newNodeRef = database.ref('mail').push();
             newNodeRef.set({
                 name: name,
