@@ -28,7 +28,8 @@ function getCurrentDateTime() {
   
       alert('Comment submitted successfully!');
   
-      
+   
+     
     } else {
       alert('You need to be logged in to submit a comment.');
     }
@@ -50,9 +51,17 @@ function getCurrentDateTime() {
     contentElement.classList.add('comment-content');
     contentElement.textContent = comment.comment;
   
+    var deleteButton = document.createElement('button');
+    deleteButton.classList.add('comment-delete');
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', function() {
+      deleteComment(comment);
+    });
+  
     commentDiv.appendChild(nameElement);
     commentDiv.appendChild(dateElement);
     commentDiv.appendChild(contentElement);
+    commentDiv.appendChild(deleteButton);
   
     var commentsSection = document.getElementById('comments-section');
     commentsSection.appendChild(commentDiv);
@@ -62,31 +71,65 @@ function getCurrentDateTime() {
     if (typeof loggedInUserName !== 'undefined') {
       return loggedInUserName;
     } else {
-      return null; // Return null or handle the case when the variable is not defined
+      return null;
     }
   }
   
-  function getLoggedInUserFullName() {
-    var user = firebase.auth().currentUser;
-    if (user) {
-      var userId = user.uid;
-      var userRef = firebase.database().ref('users/' + userId);
-      userRef.once('value', function(snapshot) {
-        var userData = snapshot.val();
-        var firstName = userData.firstname || "";
-        var lastName = userData.lastname || "";
-        var fullName = firstName + " " + lastName;
-        loggedInUserName = fullName; // Update the loggedInUserName variable
+  function saveUserComment(comment) {
+    var userComments = JSON.parse(localStorage.getItem('userComments')) || [];
+    userComments.push(comment);
+    localStorage.setItem('userComments', JSON.stringify(userComments));
+  }
+  
+  function loadUserComments() {
+    var userComments = JSON.parse(localStorage.getItem('userComments')) || [];
+    userComments.forEach(function(comment) {
+      displayComment(comment);
+    });
+  }
+  
+  function deleteComment(comment) {
+    var database = firebase.database();
+    var commentRef = database.ref('comment_section');
+    commentRef.orderByChild('comment').equalTo(comment.comment).once('value', function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        childSnapshot.ref.remove()
+          .then(function() {
+            // Comment successfully deleted
+            console.log('Comment deleted successfully');
+            removeCommentFromLocalStorage(comment); // Remove the comment from local storage
+            removeCommentFromUI(comment); // Remove the comment from the UI
+          })
+          .catch(function(error) {
+            // Error deleting comment
+            console.error('Error deleting comment:', error);
+          });
       });
-    }
-    return getLoggedInUserName(); // Return the updated full name
+    });
   }
   
+  function removeCommentFromLocalStorage(comment) {
+    var userComments = JSON.parse(localStorage.getItem('userComments')) || [];
+    var updatedComments = userComments.filter(function(c) {
+      return c.comment !== comment.comment;
+    });
+    localStorage.setItem('userComments', JSON.stringify(updatedComments));
+  }
+  
+  function removeCommentFromUI(comment) {
+    var comments = document.getElementsByClassName('comment');
+    for (var i = 0; i < comments.length; i++) {
+      var content = comments[i].getElementsByClassName('comment-content')[0];
+      if (content && content.textContent === comment.comment) {
+        comments[i].remove();
+        break;
+      }
+    }
+  }
   
   function displayComments() {
     var database = firebase.database();
     var commentRef = database.ref('comment_section');
-  
   
     commentRef.on('child_added', function(snapshot) {
       var comment = snapshot.val();
@@ -94,5 +137,5 @@ function getCurrentDateTime() {
     });
   }
   
-  
-  displayComments();        
+  loadUserComments();
+  displayComments();
