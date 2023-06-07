@@ -4,6 +4,8 @@ document.getElementById("product-add-cart").addEventListener("click", function()
         window.location.href = "login.html";
       } else {
     
+
+        
       }
     });
   });
