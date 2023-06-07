@@ -150,14 +150,6 @@
                     <div class="col-lg-8">
                         <div class="product__details__text">
                             <h4>Kan Girl Fuck Everyone - Black</h4>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <span> - 0 Reviews</span>
-                            </div>
                             <h3>₱549.00</h3>
                             <p>This is a silkscreen-printed T-Shirt with the logo printed on the front, and an unknown girl face on the back. This is made out of 100% cotton, providing comfort and style to your fit.
                             </p>
@@ -199,13 +191,10 @@
                         <div class="product__details__tab">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#tabs-5"
+                                    <a class="nav-link active" data-toggle="tab" 
                                     role="tab">Description</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Customer
-                                    Previews</a>
-                                </li>
+                               
                             </ul>
                         </div>
                     </div>
@@ -220,7 +209,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="related-title">Related Product</h3>
+                    <h3 class="related-title" style="color: white">Related Product</h3>
                 </div>
             </div>
             <div class="row">
