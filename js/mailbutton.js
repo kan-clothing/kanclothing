@@ -8,10 +8,12 @@ function fetchMessages() {
       // Clear existing message blocks
       messageBlockContainer.innerHTML = '';
   
-      // Update the message count
-      var messageCount = Object.keys(messages).length;
+      // Update the message count only if it is not already set
       var notifCounter = document.querySelector('.notif-counter');
-      notifCounter.textContent = messageCount;
+      if (!notifCounter.textContent) {
+        var messageCount = Object.keys(messages).length;
+        notifCounter.textContent = (messageCount > 9) ? '9+' : messageCount;
+      }
   
       // Convert messages to an array
       var messageArray = Object.values(messages);
@@ -40,6 +42,7 @@ function fetchMessages() {
       }
     });
   }
+  
   
   // Function to create a message block element
   function createMessageBlock(message) {
@@ -73,4 +76,11 @@ function fetchMessages() {
   
   // Fetch messages on page load
   fetchMessages();
+  
+  // Add event listener to reset mailnotif on click
+  var messagesDropdown = document.getElementById('messagesDropdown');
+  messagesDropdown.addEventListener('click', function() {
+    var notifCounter = document.querySelector('.notif-counter');
+    notifCounter.textContent = '0';
+  });
   
