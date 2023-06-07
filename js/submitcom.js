@@ -38,6 +38,7 @@ function getCurrentDateTime() {
   function displayComment(comment) {
     var commentDiv = document.createElement('div');
     commentDiv.classList.add('comment');
+    commentDiv.style.width = '880px'; 
   
     var nameElement = document.createElement('p');
     nameElement.classList.add('comment-name');
@@ -64,7 +65,16 @@ function getCurrentDateTime() {
     commentDiv.appendChild(deleteButton);
   
     var commentsSection = document.getElementById('comments-section');
-    commentsSection.appendChild(commentDiv);
+    var firstComment = commentsSection.firstChild;
+    if (firstComment) {
+      commentsSection.insertBefore(commentDiv, firstComment);
+    } else {
+      commentsSection.appendChild(commentDiv);
+    }
+  
+    if (commentsSection.childElementCount > 3) {
+      commentsSection.classList.add('scrollable-comments');
+    }
   }
   
   function getLoggedInUserName() {
@@ -129,7 +139,7 @@ function getCurrentDateTime() {
   
   function displayComments() {
     var database = firebase.database();
-    var commentRef = database.ref('comment_section');
+    var commentRef = database.ref('comment_section').orderByChild('date');
   
     commentRef.on('child_added', function(snapshot) {
       var comment = snapshot.val();
@@ -141,6 +151,5 @@ function getCurrentDateTime() {
       }
     });
   }
-  
   loadUserComments();
   displayComments();
