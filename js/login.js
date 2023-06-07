@@ -29,6 +29,7 @@ function updateLoggedInStatus(status) {
   var loginResp = document.getElementById("login-resp");
   var orResp = document.getElementById("or-resp");
   var registerResp = document.getElementById("register-resp");
+  var loggedInUserName = "";
 
   if (isLoggedIn) {
     console.log('User is logged in!');
@@ -167,6 +168,7 @@ function validate_field(field) {
 }
 
 function updateUsername(username) {
+  loggedInUserName = username;
   var usernameElements = document.getElementsByClassName("username");
   for (var i = 0; i < usernameElements.length; i++) {
     usernameElements[i].innerText = "Welcome, " + username;
