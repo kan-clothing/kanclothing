@@ -204,15 +204,16 @@
 
                         <div class="black-shirt colorful-shirt col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg"  style="border: 1px solid #6f6859;"></div>
-                                <div class="product__item__text">
-                                    <h6>Kan Desolated - Black</h6>
-                                    <a href="kan-desolated-black.php" class="add-cart">View Product</a>
-                                <button class="btn1" id="add-to-cart-btn1" onclick="addProductToCart('product1');">Add to cart</button>
+                              <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg" style="border: 1px solid #6f6859;"></div>
+                              <div class="product__item__text">
+                                <h6>Kan Desolated - Black</h6>
+                                <a href="kan-desolated-black.php" class="add-cart">View Product</a>
+                                <button class="btn1 add-to-cart-btn" data-product="product1">Add to cart</button>
                                 <h5>₱549</h5>
                               </div>
                             </div>
                           </div>
+                          
 
                           <div class="white-shirt with-person col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item sale">
@@ -478,7 +479,40 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
     <script src="js/login.js"></script>
     <script src="js/shoppingcartAddItem.js"></script>
+    <script src="js/createUserCart.js"></script>
+    <script src="js/fetchProducts.js"></script>
+    <script src="js/addProductToCart.js"></script>
     
+
+
+
+
+    <script>
+        // Fetch products and add one of them to the cart
+        function fetchAndAddProductToCart() {
+          fetchProducts()
+            .then((products) => {
+              if (products.length > 0) {
+                var productToAdd = products[1]; // Select the first product
+                addProductToCart(productToAdd);
+              } else {
+                console.log("No products available");
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching products:", error);
+            });
+        }
+      </script>
+
+
+
+
+
+
+
+
+
     <script>
 
 function updateUsername(username) {

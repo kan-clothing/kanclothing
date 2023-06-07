@@ -1,25 +1,25 @@
-function createUserCart() {
-    // Check if Firebase has already been initialized
-    if (!firebase.apps.length) {
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_AUTH_DOMAIN",
-        databaseURL: "YOUR_DATABASE_URL",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_STORAGE_BUCKET",
-        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-        appId: "YOUR_APP_ID"
-      };
+// Check if Firebase has already been initialized
+if (!firebase.apps.length) {
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAMo5G5bWkDHzyXkLQjcB6F5C8GQGmeiNc",
+        authDomain: "kan-clothing.firebaseapp.com",
+        databaseURL: "https://kan-clothing-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "kan-clothing",
+        storageBucket: "kan-clothing.appspot.com",
+        messagingSenderId: "943100252975",
+        appId: "1:943100252975:web:0268951ffea192d27e47da"
+    };
   
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-    }
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  }
   
+  // Function to create a cart for the current user
+  function createUserCart() {
     // Get the current user
     const user = firebase.auth().currentUser;
   
-    // Check if the user is logged in
     if (user) {
       // Get a reference to the 'users' node in the database
       const usersRef = firebase.database().ref("users");
@@ -31,9 +31,7 @@ function createUserCart() {
       cartRef.once('value', function(snapshot) {
         if (!snapshot.exists()) {
           // Create the 'cart' node if it doesn't exist
-          cartRef.set({
-            
-          })
+          cartRef.set({})
             .then(() => {
               console.log("Cart created in Firebase");
             })
