@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -43,6 +42,10 @@
       width: 50%;
       height: 20px;
       overflow: hidden;
+   }
+
+   .namecell {
+      width: 60px;
    }
 
       </style>
@@ -346,18 +349,18 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Mails</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Mails sent by the users</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
+                                            <th class = "namecell">Name</th>
                                             <th>Subject</th>
                                             <th>Message</th>
                                             <th>Email</th>
@@ -367,7 +370,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
+                                            <th class = "namecell">Name</th>
                                             <th>Subject</th>
                                             <th>Message</th>
                                             <th>Email</th>
@@ -378,7 +381,7 @@
 
                                     <tbody class = "table-body">
                                         <tr>
-                                            <td class = "name"></td>
+                                            <td class = "name namecell"></td>
                                             <td class = "subject"></td>
                                             <td class = "message"></td>
                                             <td class = "email"></td>
