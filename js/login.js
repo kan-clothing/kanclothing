@@ -61,8 +61,7 @@ function updateLoggedInStatus(status) {
   }
 }
 
-var GlobalEmail; // Global variable to store user email
-var GlobalUID;
+
 
 auth.onAuthStateChanged(function (user) {
   if (user && user.emailVerified) {
@@ -76,8 +75,6 @@ auth.onAuthStateChanged(function (user) {
       updateUsername(firstName);
 
       console.log('User logged in:', user.email);
-      GlobalEmail = user.email; // Assign the value to the global variable
-      GlobalUID = userId; // Assign the value to the global variable
       createUserCart();
 
       if (userData.admin === 1) {
