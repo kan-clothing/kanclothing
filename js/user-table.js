@@ -21,13 +21,13 @@ function getUsersFromDatabase() {
         row.innerHTML = '<td class="fname" contenteditable="true" data-userid="' + userId + '">' + user.firstname + '</td>' +
           '<td class="lname" contenteditable="true" data-userid="' + userId + '">' + user.lastname + '</td>' +
           '<td class="email">' + user.email + '</td>' +
-          '<td class="login-status">' + user.loginStatus + '</td>' +
+          '<td class="login-status" contenteditable="true" data-userid="' + userId + '">' + user.loginStatus + '</td>' +
           '<td class="admin-status" contenteditable="true" data-userid="' + userId + '">' + user.admin + '</td>';
 
         tableBody.appendChild(row);
       });
 
-      var editableCells = document.querySelectorAll('.fname, .lname');
+      var editableCells = document.querySelectorAll('.fname, .lname, .login-status, .admin-status');
       editableCells.forEach(function(cell) {
         cell.addEventListener('click', function(event) {
           var userId = event.target.dataset.userid;
@@ -43,97 +43,64 @@ function getUsersFromDatabase() {
           enterButton.classList.add('enter-button');
           event.target.appendChild(enterButton);
           enterButton.addEventListener('click', function() {
-            var newName = inputElement.value;
-            var fieldName = event.target.classList.contains('fname') ? 'firstname' : 'lastname';
-            usersRef.child(userId).update({ [fieldName]: newName })
+            var newValue = inputElement.value;
+            var fieldName = event.target.classList.contains('fname') ? 'firstname' :
+              event.target.classList.contains('lname') ? 'lastname' :
+              event.target.classList.contains('login-status') ? 'loginStatus' :
+              'admin';
+
+            if (fieldName === 'admin') {
+              // Validate and convert the admin value to a number between 0 and 1
+              var adminValue = parseFloat(newValue);
+              if (!isNaN(adminValue) && adminValue >= 0 && adminValue <= 1) {
+                newValue = adminValue;
+              } else {
+                console.log('Invalid admin value. Enter a number between 0 and 1.');
+                return;
+              }
+            }
+
+            usersRef.child(userId).update({ [fieldName]: newValue })
               .then(function() {
                 console.log(fieldName + ' updated successfully!');
               })
               .catch(function(error) {
                 console.log('Error updating ' + fieldName + ':', error);
               });
-            event.target.innerHTML = newName;
+            event.target.innerHTML = newValue;
           });
           inputElement.addEventListener('blur', function() {
-            var newName = inputElement.value;
-            var fieldName = event.target.classList.contains('fname') ? 'firstname' : 'lastname';
-            usersRef.child(userId).update({ [fieldName]: newName })
+            var newValue = inputElement.value;
+            var fieldName = event.target.classList.contains('fname') ? 'firstname' :
+              event.target.classList.contains('lname') ? 'lastname' :
+              event.target.classList.contains('login-status') ? 'loginStatus' :
+              'admin';
+
+            if (fieldName === 'admin') {
+              // Validate and convert the admin value to a number between 0 and 1
+              var adminValue = parseFloat(newValue);
+              if (!isNaN(adminValue) && adminValue >= 0 && adminValue <= 1) {
+                newValue = adminValue;
+              } else {
+                console.log('Invalid admin value. Enter a number between 0 and 1.');
+                return;
+              }
+            }
+
+            usersRef.child(userId).update({ [fieldName]: newValue })
               .then(function() {
                 console.log(fieldName + ' updated successfully!');
               })
               .catch(function(error) {
                 console.log('Error updating ' + fieldName + ':', error);
               });
-            event.target.innerHTML = newName;
+            event.target.innerHTML = newValue;
           });
         });
       });
 
-      var sortStatus = {
-        fname: 'asc',
-        lname: 'asc',
-        login: 'asc',
-        admin: 'asc'
-      };
+      // Rest of the code...
 
-      var nameSortButton = document.querySelector('th[onclick="namesort()"]');
-      var lnameSortButton = document.querySelector('th[onclick="lnamesort()"]');
-      var loginSortButton = document.querySelector('th[onclick="loginsort()"]');
-      var adminSortButton = document.querySelector('th[onclick="adminsort()"]');
-
-      nameSortButton.addEventListener('click', function() {
-        sortTable('fname');
-        sortStatus.fname = sortStatus.fname === 'asc' ? 'desc' : 'asc';
-      });
-
-      lnameSortButton.addEventListener('click', function() {
-        sortTable('lname');
-        sortStatus.lname = sortStatus.lname === 'asc' ? 'desc' : 'asc';
-      });
-
-      loginSortButton.addEventListener('click', function() {
-        sortTable('login');
-        sortStatus.login = sortStatus.login === 'asc' ? 'desc' : 'asc';
-      });
-
-      adminSortButton.addEventListener('click', function() {
-        sortTable('admin');
-        sortStatus.admin = sortStatus.admin === 'asc' ? 'desc' : 'asc';
-      });
-
-      function sortTable(field) {
-        var rows = Array.from(tableBody.querySelectorAll('tr'));
-
-        rows.sort(function(a, b) {
-          var aValue = getValue(a, field);
-          var bValue = getValue(b, field);
-
-          if (field === 'fname' || field === 'lname') {
-            return aValue.localeCompare(bValue);
-          } else {
-            return aValue - bValue;
-          }
-        });
-
-        if (sortStatus[field] === 'desc') {
-          rows.reverse();
-        }
-
-        tableBody.innerHTML = '';
-        rows.forEach(function(row) {
-          tableBody.appendChild(row);
-        });
-      }
-
-      function getValue(row, field) {
-        var cell = row.querySelector('.' + field);
-
-        if (field === 'login-status' || field === 'admin-status') {
-          return parseInt(cell.innerText);
-        } else {
-          return cell.innerText;
-        }
-      }
     }
   });
 }
