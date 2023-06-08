@@ -208,7 +208,7 @@
                               <div class="product__item__text">
                                 <h6>Kan Desolated - Black</h6>
                                 <a href="kan-desolated-black.php" class="add-cart">View Product</a>
-                                <button class="btn1 add-to-cart-btn" id="add-to-cart-btn1" onclick="addProductToCart('product1');">Add to cart</button>
+                                
                                 <h5>₱549</h5>
                               </div>
                             </div>
@@ -494,7 +494,7 @@
             .then((products) => {
               if (products.length > 0) {
                 var productToAdd = products[1]; // Select the first product
-                addProductToCart(productToAdd);
+                addProductToCart(productToAdd, size);
               } else {
                 console.log("No products available");
               }
