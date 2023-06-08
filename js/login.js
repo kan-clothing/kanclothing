@@ -115,7 +115,7 @@ function hideAdminButton() {
 function login() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
-  windowed.GlobalEmail = email;
+  //windowed.GlobalEmail = email;
 
   if (!validate_field(email) || !validate_email(email)) {
     alert('Please enter a valid email address.');
