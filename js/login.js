@@ -115,7 +115,6 @@ function hideAdminButton() {
 function login() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
-  //windowed.GlobalEmail = email;
 
   if (!validate_field(email) || !validate_email(email)) {
     alert('Please enter a valid email address.');
@@ -140,8 +139,9 @@ function login() {
         localStorage.setItem("isLoggedIn", true);
 
         database_ref.child('users/' + user.uid).update(user_data);
-        window.history.back();
 
+        // Redirect to index.html
+        window.location.href = 'index.html';
       } else {
         auth.signOut();
         alert('Email not verified. Please check your email and verify your account.');
@@ -153,6 +153,7 @@ function login() {
       alert(error_code);
     });
 }
+
 
 function validate_email(email) {
   expression = /^[^@]+@\w+(\.\w+)+\w$/;
