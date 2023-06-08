@@ -1,7 +1,5 @@
-
-  
-  // Function to retrieve data from Firebase and populate the table
-  function populateTable() {
+// Function to retrieve data from Firebase and populate the table
+function populateTable() {
     var tableBody = document.querySelector(".table-body");
   
     // Clear existing table entries
@@ -29,7 +27,7 @@
         row.appendChild(phoneCell);
   
         var dateCell = document.createElement("td");
-        dateCell.textContent = checkout.dateSent;
+        dateCell.textContent = checkout["datesent"]; // Use bracket notation to access datesent property
         row.appendChild(dateCell);
   
         var productsCell = document.createElement("td");
@@ -37,17 +35,42 @@
         row.appendChild(productsCell);
   
         var priceCell = document.createElement("td");
-        priceCell.textContent = checkout.priceAccumulate;
+        priceCell.textContent = 0; // Use the correct property name from the Firebase database
         row.appendChild(priceCell);
   
         var deleteCell = document.createElement("td");
         deleteCell.textContent = "X";
+        deleteCell.addEventListener("click", function () {
+          if (confirm("WARNING: Delete Transaction?")) {
+            // Delete entry from Firebase
+            childSnapshot.ref.remove()
+              .then(function () {
+                // Remove row from the table
+                row.remove();
+              })
+              .catch(handleFirebaseError);
+          }
+        });
         row.appendChild(deleteCell);
   
         tableBody.appendChild(row);
       });
     });
   }
+  
+  // Function to handle errors when retrieving data from Firebase
+  function handleFirebaseError(error) {
+    console.error("Firebase error:", error);
+  }
+  
+  // Retrieve data from Firebase and populate the table
+  database
+    .ref("checkout")
+    .once("value")
+    .then(function (snapshot) {
+      populateTable();
+    })
+    .catch(handleFirebaseError);
   
   // Call the populateTable function to populate the table initially
   populateTable();

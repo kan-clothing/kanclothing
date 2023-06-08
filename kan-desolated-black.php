@@ -161,43 +161,41 @@
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
-                        <div class="product__details__text">
-                            <h4>Kan Desolated - Black</h4>
-                           
-                            <h3>₱410.00</h3>
-                            <p>This is a silkscreen-printed T-Shirt with the logo printed on the front, and an unknown girl face on the back. This is made out of 100% cotton, providing comfort and style to your fit.
-                            </p>
-                            <div class="product__details__option">
-                                <div class="product__details__option__size">
-                                    <span>Size:</span>
-                                    <label for="xxl">xxl
-                                        <input type="radio" id="xxl">
-                                    </label>
-                                    <label class="active" for="xl">xl
-                                        <input type="radio" id="xl">
-                                    </label>
-                                    <label for="l">l
-                                        <input type="radio" id="l">
-                                    </label>
-                                    <label for="sm">s
-                                        <input type="radio" id="sm">
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="product__details__cart__option">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
-                                </div>
-                                <button type = "button" id = "product-add-cart" href="" onclick="addToCart()" class="primary-btn">add to cart</button>
-                            </div>
-                            <div class="product__details__last__option">
-                                <h5><span>Guaranteed Safe Checkout</span></h5>
-                                <img src="img/jat.png" alt=""><img src="img/paypal.png" alt="">
-                              
-                            </div>
-                        </div>
+                    <div class="product__details__text">
+    <h4>Kan Desolated - Black</h4>
+    <h3>₱410.00</h3>
+    <p>This is a silkscreen-printed T-Shirt with the logo printed on the front, and an unknown girl face on the back. This is made out of 100% cotton, providing comfort and style to your fit.</p>
+    <div class="product__details__option">
+        <div class="product__details__option__size">
+            <span>Size:</span>
+            <label for="xxl">
+                <input type="radio" id="xxl" name="size" value="xxl"> xxl
+            </label>
+            <label class="active" for="xl">
+                <input type="radio" id="xl" name="size" value="xl"> xl
+            </label>
+            <label for="l">
+                <input type="radio" id="l" name="size" value="l"> l
+            </label>
+            <label for="sm">
+                <input type="radio" id="sm" name="size" value="s"> s
+            </label>
+        </div>
+    </div>
+    <div class="product__details__cart__option">
+        <div class="quantity">
+            <div class="pro-qty">
+                <input type="number" id="quantityInput" value="1" min="1">
+            </div>
+        </div>
+        <button type="button" class="btn1 add-to-cart-btn" id="add-to-cart-btn1" onclick="addProductToCart('product1');">add to cart</button>
+    </div>
+    <div class="product__details__last__option">
+        <h5><span>Guaranteed Safe Checkout</span></h5>
+        <img src="img/jat.png" alt=""><img src="img/paypal.png" alt="">
+    </div>
+</div>
+
                     </div>
                 </div>
                 <div class="row">
@@ -219,6 +217,30 @@
     <!-- Shop Details Section End -->
 
     <!-- Related Section Begin -->
+    <script>
+  // Fetch products and add one of them to the cart
+  function fetchAndAddProductToCart() {
+    fetchProducts()
+      .then((products) => {
+        if (products.length > 0) {
+          var productToAdd = products[1]; // Select the first product
+
+          // Prompt the user to enter the size
+          var size = prompt("Please enter the size (e.g., S, M, L):");
+          if (size) {
+            addProductToCart(productToAdd, size);
+          } else {
+            console.log("Invalid size entered");
+          }
+        } else {
+          console.log("No products available");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
+  }
+</script>
 
     
 
@@ -1218,14 +1240,21 @@ switch($display4){
     <script src = "https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
     <script src = "js/login.js"></script>
     <script src = "js/loggedoutclick.js"></script>
+    <script src="js/createUserCart.js"></script>
+    <script src="js/fetchProducts.js"></script>
+    <script src="js/addProductToCart.js"></script>
+    
 
-    <script>
+
+
+    
+ <!--    <script>
         var itemName = 'Kan Desolated - Black';
         var itemPrice = '549';
         var itemImage = 'img/shop-details/deso-prev1.jpg';
       
         addItemToCart(itemName, itemPrice, itemImage);
-      </script>
+      </script> -->
 </body>
 
 </html>
