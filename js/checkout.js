@@ -1,85 +1,49 @@
-var btn = document.getElementById('checkout');
-btn.addEventListener('click', function(e) {
-    e.preventDefault();
+const checkoutRef = firebase.database().ref('checkout');
 
-    alert("If the next message box says OK, your email has been sent successfully. Make sure you have entered a valid email; we'll reply as soon as possible (our email may be marked as spam, please check spam). Have a nice day!");
+// Function to load the ledger data from Firebase
+function loadLedgerData() {
+  // Get a reference to the table body element
+  const tableBody = document.querySelector('.table-body');
 
-    var sname = document.getElementById('fname').value;
-    var fname = document.getElementById('sname').value;
-    var email = document.getElementById('email').value;
-    var message1 = document.getElementById('message').value;
-    var city = document.getElementById('tcity').value;
-    var postal = document.getElementById('postcode').value;
-    var phone = document.getElementById('phone').value;
-    var address1 = document.getElementById('address1').value;
-    var address2 = document.getElementById('address2').value;
+  // Clear existing table rows
+  tableBody.innerHTML = '';
 
-    if (sname === '' || fname === '' || email === '' || city === '' || postal === '' || phone === '' || address1 === '') {
-        alert('Please fill in all required fields.');
-        return;
-    }
+  // Fetch the data from the Firebase checkout node
+  checkoutRef.once('value', (snapshot) => {
+    snapshot.forEach((childSnapshot) => {
+      // Get the data for each checkout entry
+      const checkoutData = childSnapshot.val();
 
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
-        return;
-    }
+      // Create a new table row element
+      const newRow = document.createElement('tr');
 
-    var phoneRegex = /^09\d{9}$/;
-    if (!phoneRegex.test(phone)) {
-        alert('Please enter a valid phone number (11 digits starting with 09).');
-        return;
-    }
+      // Set the HTML content for the table row using the checkout data
+      newRow.innerHTML = `
+        <td class="name">${checkoutData.name}</td>
+        <td class="email">${checkoutData.email}</td>
+        <td class="phone-num">${checkoutData.phone}</td>
+        <td class="date-sent">${checkoutData.datesent}</td>
+        <td class="products-bought">${checkoutData.orders}</td>
+        <td class="price-accum">${checkoutData.priceaccumulated}</td>
+        <td class="delete-order">X</td>
+      `;
 
-    var mail = {
-        name: fname + ' ' + sname,
-        email: email,
-        orders: 'Nothing yet',
-        notes: message1,
-        city: city,
-        postcode: postal,
-        phone: phone,
-        address: address1 + ' ' + address2,
-        'date-sent': getFormattedDate(), // Add 'date-sent' field with the current military time in the Philippines
-        'price-accumulated': '0' // Add 'price-accumulated' field with the desired value
-    };
-
-    // Update Firebase database
-    var databaseRef = firebase.database().ref('checkout');
-    databaseRef.push(mail)
-        .then(function() {
-            // Email sending code here
-            Email.send({
-                Host: "smtp.elasticemail.com",
-                Username: "kanclothingph1@gmail.com",
-                Password: "5A9752781AFC5E4478BF8F10BB7AACF32FDC",
-                To: "kanclothingph1@gmail.com",
-                From: "kanclothingph1@gmail.com",
-                Subject: 'CHECKOUT',
-                Body: 'SUBJECT: CHECKOUT\n\nORDERS: NOTHING YET\n\nACCUMULATED PRICE: NOTHING YET\n\nNAME: ' + sname + ' ' + fname + '\n\nEMAIL: ' + email + '\n\nPHONE: ' + phone + '\n\nADDRESS: ' + address1 + ' ' + address2 + '\n\nPOSTCODE: ' + postal + '\n\nNOTES: ' + message1
-            })
-                .then(function() {
-                    alert("Email sent successfully");
-                })
-                .catch(function(error) {
-                    alert("Error: " + error);
-                });
-        })
-        .catch(function(error) {
-            console.log('Error updating database:', error);
-        });
-});
-
-function getFormattedDate() {
-    var date = new Date();
-    var options = {
-        timeZone: 'Asia/Manila',
-        hour12: false,
-        hour: 'numeric',
-        minute: 'numeric',
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-    };
-    return date.toLocaleString('en-US', options);
+      // Append the new table row to the table body
+      tableBody.appendChild(newRow);
+    });
+  });
 }
+
+// Function to initialize the ledger
+function initializeLedger() {
+  // Load the initial data from Firebase
+  loadLedgerData();
+
+  // Listen for changes in the Firebase checkout node and update the ledger accordingly
+  checkoutRef.on('child_added', loadLedgerData);
+  checkoutRef.on('child_changed', loadLedgerData);
+  checkoutRef.on('child_removed', loadLedgerData);
+}
+
+// Call the initializeLedger function when the DOM is ready
+document.addEventListener('DOMContentLoaded', initializeLedger);

@@ -34,7 +34,7 @@ function getUsersFromDatabase() {
           var inputElement = document.createElement('input');
           inputElement.type = 'text';
           inputElement.value = event.target.innerText;
-          inputElement.classList.add('name-input');
+          inputElement.classList.add('input-edit');
           event.target.innerHTML = '';
           event.target.appendChild(inputElement);
           inputElement.focus();
@@ -46,16 +46,13 @@ function getUsersFromDatabase() {
             var newValue = inputElement.value;
             var fieldName = event.target.classList.contains('fname') ? 'firstname' :
               event.target.classList.contains('lname') ? 'lastname' :
-              event.target.classList.contains('login-status') ? 'loginStatus' :
-              'admin';
+              event.target.classList.contains('login-status') ? 'loginStatus' : 'admin';
 
             if (fieldName === 'admin') {
-              // Validate and convert the admin value to a number between 0 and 1
-              var adminValue = parseFloat(newValue);
-              if (!isNaN(adminValue) && adminValue >= 0 && adminValue <= 1) {
-                newValue = adminValue;
+              if (newValue === '0' || newValue === '1') {
+                newValue = parseInt(newValue);
               } else {
-                console.log('Invalid admin value. Enter a number between 0 and 1.');
+                console.log('Invalid value for admin property. Must be 0 or 1.');
                 return;
               }
             }
@@ -73,16 +70,13 @@ function getUsersFromDatabase() {
             var newValue = inputElement.value;
             var fieldName = event.target.classList.contains('fname') ? 'firstname' :
               event.target.classList.contains('lname') ? 'lastname' :
-              event.target.classList.contains('login-status') ? 'loginStatus' :
-              'admin';
+              event.target.classList.contains('login-status') ? 'loginStatus' : 'admin';
 
             if (fieldName === 'admin') {
-              // Validate and convert the admin value to a number between 0 and 1
-              var adminValue = parseFloat(newValue);
-              if (!isNaN(adminValue) && adminValue >= 0 && adminValue <= 1) {
-                newValue = adminValue;
+              if (newValue === '0' || newValue === '1') {
+                newValue = parseInt(newValue);
               } else {
-                console.log('Invalid admin value. Enter a number between 0 and 1.');
+                console.log('Invalid value for admin property. Must be 0 or 1.');
                 return;
               }
             }
@@ -100,7 +94,6 @@ function getUsersFromDatabase() {
       });
 
       // Rest of the code...
-
     }
   });
 }
