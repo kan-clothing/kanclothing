@@ -1,64 +1,49 @@
-var btn = document.getElementById('checkout');
-btn.addEventListener('click', function(e) {
-    e.preventDefault();
+const checkoutRef = firebase.database().ref('checkout');
 
-    // Alert message
-    alert("If the next message box says OK, your email has been sent successfully. Make sure you have entered a valid email, we'll reply as soon as possible (our email may be marked as spam, please check spam). Have a nice day!");
+// Function to load the ledger data from Firebase
+function loadLedgerData() {
+  // Get a reference to the table body element
+  const tableBody = document.querySelector('.table-body');
 
-    // Retrieve form input values
-    var sname = document.getElementById('fname').value;
-    var fname = document.getElementById('sname').value;
-    var email = document.getElementById('email').value;
-    var message1 = document.getElementById('message').value;
-    var city = document.getElementById('tcity').value;
-    var postal = document.getElementById('postcode').value;
-    var phone = document.getElementById('phone').value;
-    var address1 = document.getElementById('address1').value;
-    var address2 = document.getElementById('address2').value;
+  // Clear existing table rows
+  tableBody.innerHTML = '';
 
-    // Validate required fields
-    if (sname === '' || fname === '' || email === '' || city === '' || postal === '' || phone === '' || address1 === '') {
-        alert('Please fill in all required fields.');
-        return;
-    }
+  // Fetch the data from the Firebase checkout node
+  checkoutRef.once('value', (snapshot) => {
+    snapshot.forEach((childSnapshot) => {
+      // Get the data for each checkout entry
+      const checkoutData = childSnapshot.val();
 
-    // Validate email format
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
-        return;
-    }
+      // Create a new table row element
+      const newRow = document.createElement('tr');
 
-    // Validate phone number format
-    var phoneRegex = /^09\d{9}$/;
-    if (!phoneRegex.test(phone)) {
-        alert('Please enter a valid phone number (11 digits starting with 09).');
-        return;
-    }
+      // Set the HTML content for the table row using the checkout data
+      newRow.innerHTML = `
+        <td class="name">${checkoutData.name}</td>
+        <td class="email">${checkoutData.email}</td>
+        <td class="phone-num">${checkoutData.phone}</td>
+        <td class="date-sent">${checkoutData.datesent}</td>
+        <td class="products-bought">${checkoutData.orders}</td>
+        <td class="price-accum">${checkoutData.priceaccumulated}</td>
+        <td class="delete-order">X</td>
+      `;
 
-    // Construct email body
-    var mail = 'SUBJECT: CHECKOUT <br>' +
-               'ORDERS: NOTHING YET <br>' +
-               'ACCUMULATED PRICE: NOTHING YET <br>' +
-               'NAME: ' + sname + ' ' + fname + '<br>' +
-               'EMAIL: ' + email + '<br>' +
-               'PHONE: ' + phone + '<br>' +
-               'ADDRESS: ' + address1 + ' ' + address2 + '<br>' +
-               'POSTCODE: ' + postal + '<br>' +
-               'NOTES: ' + message1;
+      // Append the new table row to the table body
+      tableBody.appendChild(newRow);
+    });
+  });
+}
 
-    // Send email
-    Email.send({
-        Host: "smtp.elasticemail.com",
-        Username: "kanclothingph1@gmail.com",
-        Password: "5A9752781AFC5E4478BF8F10BB7AACF32FDC",
-        To: "kanclothingph1@gmail.com",
-        From: "kanclothingph1@gmail.com",
-        Subject: 'CHECKOUT',
-        Body: mail,
-    }).then(
-        message => alert("Email sent successfully")
-    ).catch(
-        error => alert("Error: " + error)
-    );
-});
+// Function to initialize the ledger
+function initializeLedger() {
+  // Load the initial data from Firebase
+  loadLedgerData();
+
+  // Listen for changes in the Firebase checkout node and update the ledger accordingly
+  checkoutRef.on('child_added', loadLedgerData);
+  checkoutRef.on('child_changed', loadLedgerData);
+  checkoutRef.on('child_removed', loadLedgerData);
+}
+
+// Call the initializeLedger function when the DOM is ready
+document.addEventListener('DOMContentLoaded', initializeLedger);
