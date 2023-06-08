@@ -318,12 +318,12 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2" style="color: white;">Mails</h1>
+                    <h1 class="h3 mb-2" style="color: white;">Orders</h1>
                                         <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <p>
-                            <h6 class="m-0 font-weight-bold text-primary">Mails sent by the users, you can see more at the admin's email</h6> <a style = "margin-top: 10px"type = "button" onclick = "downloadDatabase()"class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                            <h6 class="m-0 font-weight-bold text-primary">Orders Received, you can see more in kanclothingph1@gmail.com</h6> <a style = "margin-top: 10px"type = "button" onclick = "downloadDatabase()"class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Download Database</a> <a style = "margin-top: 10px"type = "button" onclick = "uploadDatabase()"class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                     class="fas fa-upload fa-sm text-white-50"></i> Upload Database</a> </p>
                         </div>
@@ -332,37 +332,40 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th class = "namecell">Name</th>
-                                            <th>Subject</th>
-                                            <th>Message</th>
+                                            <th onclick = "namesort()">Name</th>
                                             <th>Email</th>
-                                            <th onclick = "fetchAllMail()">Date Sent</th>
-                                            <th>Delete Mail</th>
+                                            <th>Phone Number</th>
+                                            <th onclick = "datesort()">Date</th>
+                                            <th>Products</th>
+                                            <th onclick = "pricesort()">Accumulated Price</th>
+                                            <th>Delete Order</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th class = "namecell">Name</th>
-                                            <th>Subject</th>
-                                            <th>Message</th>
+                                            <th>Name</th>
                                             <th>Email</th>
-                                            <th>Date Sent</th>
-                                            <th>Delete Mail</th>
+                                            <th>Phone Number</th>
+                                            <th>Date</th>
+                                            <th>Products</th>
+                                            <th>Accumulated Price</th>
+                                            <th>Delete Order</th>
                                         </tr>
                                     </tfoot>
 
                                     <tbody class = "table-body">
                                         <tr>
-                                            <td class = "name namecell"></td>
-                                            <td class = "subject"></td>
-                                            <td class = "message"></td>
+                                            <td class = "name"></td>
                                             <td class = "email"></td>
-                                            <td class = "datesent"></td>
-                                            <td class = "deletemail">X</td>
+                                            <td class = "date-sent"></td>
+                                            <td class = "products-bought"></td>
+                                            <td class = "price-accum"></td>
+                                            <td class = "deleteorder">X</td>
                                         </tr>
                                  </tbody>
 
                                 </table>
+
                             </div>
                         </div>
                     </div>
